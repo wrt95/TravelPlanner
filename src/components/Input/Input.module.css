@@ -1,0 +1,42 @@
+.inputWrapper {
+	--input-border-color: #757575;
+	--input-hover-border-color: #0277bd;
+	--input-focus-border-color: #0288d1;
+	--input-background-color: #ffffff;
+	--input-padding: 10px;
+	--input-border-radius: 5px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	margin-bottom: 15px;
+}
+
+.inputLabel {
+	margin-bottom: 0.25rem;
+	color: var(--primary-color);
+}
+
+.input {
+	border: 1px solid var(--input-border-color);
+	padding: var(--input-padding);
+	border-radius: var(--input-border-radius);
+	background-color: var(--input-background-color);
+	color: var(--text-color);
+	transition: border-color 0.3s;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.styled-input:hover {
+	border-color: var(--input-hover-border-color);
+}
+
+.styled-input:focus {
+	border-color: var(--input-focus-border-color);
+	outline: none;
+}
+
+.hiddenLabel {
+	visibility: hidden;
+}
