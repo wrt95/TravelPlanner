@@ -1,4 +1,13 @@
-.wrapper {
+.tripHeader {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin: 0;
+	margin-bottom: 2rem;
+}
+
+.tripDay {
+	border-radius: 5px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -9,16 +18,36 @@
 	background-color: #f5e4b3;
 }
 
-.tripHeader {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
-	margin: 0;
-	margin-bottom: 2rem;
+.dayActions {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 10px;
 }
 
-th,
-td {
-	font-size: 20px;
-	padding-inline: 0.5rem;
+.table {
+	--last-column-width: 50px;
+
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.table th,
+.table td {
+	padding: 8px;
+	border-bottom: 2px solid #f4c952;
+}
+
+.table td th {
+	--number-of-columns-with-value: 4;
+
+	width: calc(
+		(100% - var(--last-column-width)) / var(--number-of-columns-with-value)
+	); /* Adjust based on the number of columns minus button width */
+}
+
+.table td:last-child,
+.table th:last-child {
+	width: var(--last-column-width);
+	text-align: center;
 }

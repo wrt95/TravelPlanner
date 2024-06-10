@@ -1,6 +1,6 @@
 import React, { ChangeEvent, FormEvent, ReactElement, useState } from 'react';
 import classes from './DaysInputForm.module.css';
-import { Input } from '../Input';
+import { Textfield } from '../Textfield';
 import { Button } from '../Button';
 
 type DaysInputFormProps = {
@@ -23,7 +23,7 @@ export const DaysInputForm = ({
 
 	return (
 		<form className={classes.form} onSubmit={handleSubmit}>
-			<Input
+			<Textfield
 				type="number"
 				value={inputValue}
 				onChange={handleChange}

@@ -1,0 +1,34 @@
+.inputContainer {
+	margin-bottom: 15px;
+}
+
+.inputLabel {
+	display: block;
+	margin-bottom: 5px;
+	color: var(--primary-color);
+}
+
+.styledInput {
+	border: 1px solid var(--input-border-color);
+	padding: var(--input-padding);
+	border-radius: var(--input-border-radius);
+	background-color: var(--input-background-color);
+	color: var(--text-color);
+	transition: border-color 0.3s;
+	width: 100%;
+	box-sizing: border-box;
+	resize: vertical;
+}
+
+.styledInput:hover {
+	border-color: var(--input-hover-border-color);
+}
+
+.styledInput:focus {
+	border-color: var(--input-focus-border-color);
+	outline: none;
+}
+
+.hiddenLabel {
+	visibility: hidden;
+}

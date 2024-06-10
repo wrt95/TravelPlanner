@@ -2,7 +2,7 @@ export type TripActivity = {
 	activity: string;
 	importantInformation?: string;
 	otherInformation?: string;
-	image?: string | null;
+	image?: File | null;
 };
 
 export type TripDay = {

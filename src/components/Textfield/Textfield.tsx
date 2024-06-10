@@ -1,24 +1,23 @@
 import { ReactElement, ChangeEvent, useId } from 'react';
-import classes from './Input.module.css';
+import classes from './Textfield.module.css';
 
-type InputProps = {
+type TextfieldProps = {
 	type: string;
 	value: string | number;
 	onChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	required?: boolean;
 	label: string;
-	id?: string;
 	hideLabel?: boolean;
 };
 
-export const Input = ({
+export const Textfield = ({
 	type,
 	value,
 	onChange,
 	required,
 	label,
 	hideLabel,
-}: InputProps): ReactElement => {
+}: TextfieldProps): ReactElement => {
 	const id = useId();
 	return (
 		<div className={classes.inputWrapper}>

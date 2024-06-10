@@ -1,7 +1,14 @@
 import React, { ReactElement } from 'react';
 import { TripActivity, TripDay } from '../../types/TripDay';
 import { TripDayTable } from './TripDayTable';
+import { Button } from '../Button';
 
+const newDay: TripActivity = {
+	activity: '',
+	importantInformation: '',
+	otherInformation: '',
+	image: null,
+};
 type TripTableProps = {
 	days: number;
 	tripData: TripDay[];
@@ -15,12 +22,7 @@ export const TripTable = ({
 }: TripTableProps): ReactElement => {
 	const handleAddRow = (dayIndex: number) => {
 		const newTripData = [...tripData];
-		newTripData[dayIndex].activities.push({
-			activity: '',
-			importantInformation: '',
-			otherInformation: '',
-			image: null,
-		});
+		newTripData[dayIndex].activities.push(newDay);
 		setTripData(newTripData);
 	};
 
@@ -28,26 +30,49 @@ export const TripTable = ({
 		dayIndex: number,
 		activityIndex: number,
 		field: keyof TripActivity,
-		value: string
+		value: string | File | null
 	) => {
-		const newTripData = [...tripData];
-		newTripData[dayIndex].activities[activityIndex][field] = value;
-		setTripData(newTripData);
+		const newTripDays = [...tripData];
+		if (field === 'image') {
+			newTripDays[dayIndex].activities[activityIndex][field] =
+				value as File | null;
+		} else {
+			newTripDays[dayIndex].activities[activityIndex][field] = value as string;
+		}
+		setTripData(newTripDays);
 	};
 
 	const handleImageUpload = (
 		dayIndex: number,
 		activityIndex: number,
-		file: File
+		file: File | null
 	) => {
-		const reader = new FileReader();
-		reader.onloadend = () => {
-			const newTripData = [...tripData];
-			newTripData[dayIndex].activities[activityIndex].image =
-				reader.result as string;
-			setTripData(newTripData);
-		};
-		reader.readAsDataURL(file);
+		const newTripDays = [...tripData];
+		newTripDays[dayIndex].activities[activityIndex].image = file;
+		setTripData(newTripDays);
+	};
+
+	const handleRemoveRow = (dayIndex: number, activityIndex: number) => {
+		const newTripData = [...tripData];
+		newTripData[dayIndex].activities.splice(activityIndex, 1);
+		setTripData(newTripData);
+	};
+
+	// TODO - Update the name of the other days when removing
+	const handleDeleteDay = (dayIndex: number) => {
+		const newTripData = [...tripData];
+		newTripData.splice(dayIndex, 1);
+		setTripData(newTripData);
+	};
+
+	const handleAddDay = () => {
+		setTripData([
+			...tripData,
+			{
+				day: tripData.length + 1,
+				activities: [newDay],
+			},
+		]);
 	};
 
 	return (
@@ -64,8 +89,13 @@ export const TripTable = ({
 					onImageUpload={(activityIndex, file) =>
 						handleImageUpload(dayIndex, activityIndex, file)
 					}
+					onRemoveActivity={(activityIndex: number) =>
+						handleRemoveRow(dayIndex, activityIndex)
+					}
+					onDeleteDay={() => handleDeleteDay(dayIndex)}
 				/>
 			))}
+			<Button onClick={handleAddDay}>Add Another Day</Button>
 		</div>
 	);
 };

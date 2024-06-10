@@ -1,37 +1,37 @@
 import { ReactElement, ChangeEvent } from 'react';
 import classes from './ActivityRow.module.css';
-import { Input } from '../../Input';
 import { TripActivity } from '../../../types/TripDay';
 import { Button } from '../../Button';
+import { FileUploader } from '../../FileUploader';
+import { TextArea } from '../../TextArea';
+import { FaTrash } from 'react-icons/fa';
 
 type ActivityRowProps = {
 	activity: TripActivity;
 	onChange: (field: keyof TripActivity, value: string) => void;
-	onImageUpload: (file: File) => void;
+	onImageUpload: (file: File | null) => void;
+	onRemove: () => void;
 };
 
 export const ActivityRow = ({
 	activity,
 	onChange,
 	onImageUpload,
+	onRemove,
 }: ActivityRowProps): ReactElement => {
-	const handleChangeActivity = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleChangeActivity = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		onChange('activity', e.target.value);
 	};
-	const handleChangeImportant = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleChangeImportant = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		onChange('importantInformation', e.target.value);
 	};
-	const handleChangeOther = (e: ChangeEvent<HTMLInputElement>) => {
+	const handleChangeOther = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		onChange('otherInformation', e.target.value);
-	};
-	const handleChangeImage = (e: ChangeEvent<HTMLInputElement>) => {
-		onImageUpload(e.target.files![0]);
 	};
 	return (
 		<tr>
 			<td>
-				<Input
-					type="text"
+				<TextArea
 					value={activity.activity}
 					onChange={handleChangeActivity}
 					required
@@ -40,8 +40,7 @@ export const ActivityRow = ({
 				/>
 			</td>
 			<td>
-				<Input
-					type="text"
+				<TextArea
 					value={activity.importantInformation ?? ''}
 					onChange={handleChangeImportant}
 					required
@@ -50,8 +49,7 @@ export const ActivityRow = ({
 				/>
 			</td>
 			<td>
-				<Input
-					type="text"
+				<TextArea
 					value={activity.otherInformation ?? ''}
 					onChange={handleChangeOther}
 					required
@@ -60,24 +58,19 @@ export const ActivityRow = ({
 				/>
 			</td>
 			<td>
-				<input
-					type="file"
-					accept="image/png, image/jpeg, image/jpg, image/heic"
-					onChange={handleChangeImage}
-				/>
-				{
-					// Only show the name of the file
-					activity.image && (
-						<img
-							src={activity.image}
-							alt="uploaded"
-							className={classes.uploadedImage}
-						/>
-					)
-				}
+				<div className={classes.fileUploaderContainer}>
+					<FileUploader
+						file={activity.image ?? null}
+						onChange={onImageUpload}
+						label="Upload image"
+						hideLabel
+					/>
+				</div>
 			</td>
 			<td>
-				<Button onClick={() => {}}>Delete Row</Button>
+				<Button onClick={onRemove}>
+					<FaTrash />
+				</Button>
 			</td>
 		</tr>
 	);
