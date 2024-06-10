@@ -19,12 +19,15 @@
 	text-align: center;
 }
 
-.resetButton {
-	margin-top: 2rem;
-}
-
 .tripLength {
 	font-size: 25px;
 	font-weight: bold;
 	margin-top: 2rem;
+}
+
+.actionButtons {
+	display: flex;
+	gap: 2rem;
+	margin-top: 2rem;
+	align-items: center;
 }

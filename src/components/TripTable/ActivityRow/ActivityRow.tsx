@@ -68,7 +68,7 @@ export const ActivityRow = ({
 				</div>
 			</td>
 			<td>
-				<Button onClick={onRemove}>
+				<Button onClick={onRemove} variant="danger">
 					<FaTrash />
 				</Button>
 			</td>

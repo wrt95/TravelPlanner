@@ -2,9 +2,31 @@ import { useEffect, useState } from 'react';
 import classes from './App.module.css';
 import { DaysInputForm } from './components/DaysInputForm';
 import { TripTable } from './components/TripTable';
-// import { ExportPDF } from './components/ExportPDF';
 import { TripDay } from './types/TripDay';
 import { Button } from './components/Button';
+import { ExportPDF } from './components/ExportPDF';
+
+/*
+	TODO LIST
+		- useContext
+		- Logic to rename the days when deleting a day
+		- Textfield to add name of the trip 
+		- Make it all save in the local storage
+		- Update colours for background and the "cards"
+		- Update colours for the buttons
+		- Update colours for the textfields
+		- Add icons to all buttons 
+		- Add icons to table header
+		- Prevent the days input from having negative values 
+		- Disable add activity button when previous activity name is empty
+		- More style on the PDF
+			- Split the activities more, add sub headers
+		- Style the images in the PDF
+		- Add pricing column
+		- Make it possible to have several trips
+			- Create a dashboard - list of my trips and a button to create new trip
+			- Managed by routing
+*/
 
 export const App = () => {
 	const [days, setDays] = useState<number>(0);
@@ -55,14 +77,12 @@ export const App = () => {
 			{days > 0 && (
 				<TripTable days={days} tripData={tripData} setTripData={setTripData} />
 			)}
-			{/*<ExportPDF tripData={tripData} />*/}
-			<Button
-				className={classes.resetButton}
-				onClick={resetData}
-				variant="danger"
-			>
-				Reset form
-			</Button>
+			<div className={classes.actionButtons}>
+				<ExportPDF tripDays={tripData} />
+				<Button onClick={resetData} variant="danger">
+					Reset form
+				</Button>
+			</div>
 		</div>
 	);
 };
