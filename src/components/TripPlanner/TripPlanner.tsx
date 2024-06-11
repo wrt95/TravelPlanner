@@ -30,36 +30,37 @@ export const TripPlanner = (): ReactElement => {
 
 	return (
 		<div className={classes.pageWrapper}>
-			<div className={classes.headerWrapper}>
-				<GiPalmTree className={classes.headerIcon} />
-				<h1 className={classes.pageHeader}>Travel Planner</h1>
-				<GiPalmTree
-					className={cn(classes.headerIcon, classes.rightHeaderIcon)}
-				/>
-			</div>
-			{tripData.days.length === 0 ? (
-				<CreateTripForm />
-			) : (
-				<div className={classes.subHeader}>
-					<p className={classes.tripLength}>
-						Your trip to "{tripData.destination}" will be {tripData.days.length}{' '}
-						day{tripData.days.length === 1 ? '' : 's'} long
-					</p>
-					<GiCommercialAirplane className={classes.subHeaderIcon} />
-					<GiSuitcase className={classes.subHeaderIcon} />
+			<div className={classes.stickyHeader}>
+				<div className={classes.headerWrapper}>
+					<GiPalmTree className={classes.headerIcon} />
+					<h1 className={classes.pageHeader}>Travel Planner</h1>
+					<GiPalmTree
+						className={cn(classes.headerIcon, classes.rightHeaderIcon)}
+					/>
 				</div>
-			)}
-			{tripData && tripData.days.length > 0 && (
-				<>
-					<div className={classes.actionButtons}>
-						<ExportPDF />
-						<Button onClick={resetData} variant="danger" icon={<FaTrash />}>
-							Reset form
-						</Button>
-					</div>
-					<TripTable />
-				</>
-			)}
+				{tripData.days.length === 0 ? (
+					<CreateTripForm />
+				) : (
+					<>
+						<div className={classes.subHeader}>
+							<p className={classes.tripLength}>
+								Your trip to "{tripData.destination}" will be{' '}
+								{tripData.days.length} day
+								{tripData.days.length === 1 ? '' : 's'} long
+							</p>
+							<GiCommercialAirplane className={classes.subHeaderIcon} />
+							<GiSuitcase className={classes.subHeaderIcon} />
+						</div>
+						<div className={classes.actionButtons}>
+							<ExportPDF />
+							<Button onClick={resetData} variant="danger" icon={<FaTrash />}>
+								Reset form
+							</Button>
+						</div>
+					</>
+				)}
+			</div>
+			{tripData && tripData.days.length > 0 && <TripTable />}
 		</div>
 	);
 };
