@@ -15,10 +15,26 @@
 	--input-focus-border-color: #0277bd;
 	--input-background-color: #ffffff;
 
+	--main-heading-font: 'Montserrat', sans-serif;
+	--body-font: 'Roboto', sans-serif;
+
 	--input-padding: 10px;
 	--input-border-radius: 5px;
 
 	--text-font-size: 20px;
+}
+
+body {
+	font-family: var(--body-font);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--main-heading-font);
 }
 
 p {

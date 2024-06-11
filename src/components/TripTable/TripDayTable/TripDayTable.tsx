@@ -3,7 +3,14 @@ import classes from './TripDayTable.module.css';
 import { ActivityRow } from '../ActivityRow';
 import { TripActivity } from '../../../types/TripDay';
 import { Button } from '../../Button';
-import { FaPlus, FaTrash } from 'react-icons/fa';
+import {
+	FaClipboardList,
+	FaImage,
+	FaInfoCircle,
+	FaPlus,
+	FaTasks,
+	FaTrash,
+} from 'react-icons/fa';
 
 type TripDayTableProps = {
 	day: number;
@@ -34,10 +41,22 @@ export const TripDayTable = ({
 			<table className={classes.table}>
 				<thead>
 					<tr>
-						<th>Activity</th>
-						<th>Important Information</th>
-						<th>Other Information</th>
-						<th>Image Upload</th>
+						<th>
+							Activity
+							<FaTasks className={classes.icon} />
+						</th>
+						<th>
+							Important Information
+							<FaInfoCircle className={classes.icon} />
+						</th>
+						<th>
+							Other Information
+							<FaClipboardList className={classes.icon} />
+						</th>
+						<th>
+							Image Upload
+							<FaImage className={classes.icon} />
+						</th>
 						<th className={classes.deleteTableHeader}>Delete activity</th>
 					</tr>
 				</thead>
