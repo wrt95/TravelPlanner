@@ -43,7 +43,7 @@ export const TripPlanner = (): ReactElement => {
 				<div className={classes.subHeader}>
 					<p className={classes.tripLength}>
 						Your trip to "{tripData.destination}" will be {tripData.days.length}{' '}
-						day{tripData.days.length === 1 ? '' : 's'}
+						day{tripData.days.length === 1 ? '' : 's'} long
 					</p>
 					<GiCommercialAirplane className={classes.subHeaderIcon} />
 					<GiSuitcase className={classes.subHeaderIcon} />
@@ -51,13 +51,13 @@ export const TripPlanner = (): ReactElement => {
 			)}
 			{tripData && tripData.days.length > 0 && (
 				<>
-					<TripTable />
 					<div className={classes.actionButtons}>
 						<ExportPDF />
 						<Button onClick={resetData} variant="danger" icon={<FaTrash />}>
 							Reset form
 						</Button>
 					</div>
+					<TripTable />
 				</>
 			)}
 		</div>

@@ -1,4 +1,5 @@
 import { ReactElement } from 'react';
+import classes from './TripTable.module.css';
 import { TripActivity, TripDay } from '../../types/TripDay';
 import { TripDayTable } from './TripDayTable';
 import { Button } from '../Button';
@@ -70,7 +71,7 @@ export const TripTable = (): ReactElement => {
 	};
 
 	return (
-		<div>
+		<div className={classes.wrapper}>
 			{tripData.days.map((tripDay: TripDay, dayIndex: number) => (
 				<TripDayTable
 					key={tripDay.day}
