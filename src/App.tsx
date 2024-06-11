@@ -17,6 +17,7 @@ import { ExportPDF } from './components/ExportPDF';
 		- Update colours for the textfields
 		- Add icons to all buttons 
 		- Add icons to table header
+		- Create hooks of the useEffects
 		- Prevent the days input from having negative values 
 		- Disable add activity button when previous activity name is empty
 		- More style on the PDF
@@ -29,7 +30,6 @@ import { ExportPDF } from './components/ExportPDF';
 */
 
 export const App = () => {
-	const [days, setDays] = useState<number>(0);
 	const [tripData, setTripData] = useState<TripDay[]>([]);
 
 	// MAKE THESE HOOKS
@@ -44,7 +44,6 @@ export const App = () => {
 	}, [tripData]);
 
 	const handleSetDays = (days: number) => {
-		setDays(days);
 		const newTripData: TripDay[] = Array.from({ length: days }, (_, i) => ({
 			day: i + 1,
 			activities: [{ activity: '', important: '', other: '', image: null }],
@@ -54,7 +53,6 @@ export const App = () => {
 
 	const resetData = () => {
 		setTripData([]);
-		setDays(0);
 		// Add a "ARE YOU SURE?"
 		localStorage.removeItem('tripData');
 	};
@@ -69,13 +67,15 @@ export const App = () => {
 			<p className={classes.pageDescription}>
 				You will be able to add and remove days later on as well.
 			</p>
-			{days === 0 ? (
+			{tripData.length === 0 ? (
 				<DaysInputForm setDays={handleSetDays} />
 			) : (
-				<p className={classes.tripLength}>Your trip is {days} days</p>
+				<p className={classes.tripLength}>
+					Your trip is {tripData.length} days
+				</p>
 			)}
-			{days > 0 && (
-				<TripTable days={days} tripData={tripData} setTripData={setTripData} />
+			{tripData.length > 0 && (
+				<TripTable tripData={tripData} setTripData={setTripData} />
 			)}
 			<div className={classes.actionButtons}>
 				<ExportPDF tripDays={tripData} />

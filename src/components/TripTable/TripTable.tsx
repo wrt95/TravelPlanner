@@ -10,13 +10,11 @@ const newDay: TripActivity = {
 	image: null,
 };
 type TripTableProps = {
-	days: number;
 	tripData: TripDay[];
 	setTripData: React.Dispatch<React.SetStateAction<TripDay[]>>;
 };
 
 export const TripTable = ({
-	days,
 	tripData,
 	setTripData,
 }: TripTableProps): ReactElement => {
@@ -58,11 +56,17 @@ export const TripTable = ({
 		setTripData(newTripData);
 	};
 
-	// TODO - Update the name of the other days when removing
 	const handleDeleteDay = (dayIndex: number) => {
 		const newTripData = [...tripData];
 		newTripData.splice(dayIndex, 1);
-		setTripData(newTripData);
+
+		const dataMappedWithNewDays = newTripData.map(
+			(data: TripDay, index: number) => ({
+				...data,
+				day: index + 1,
+			})
+		);
+		setTripData(dataMappedWithNewDays);
 	};
 
 	const handleAddDay = () => {
