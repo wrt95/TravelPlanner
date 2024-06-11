@@ -56,6 +56,7 @@ export const CreateTripForm = (): ReactElement => {
 					name="days"
 					required
 					label="Number of days of your trip"
+					min={1}
 				/>
 				<Button type="submit">Create Plan</Button>
 			</form>

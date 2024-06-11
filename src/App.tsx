@@ -9,7 +9,6 @@ import { TripPlanner } from './components/TripPlanner';
 		- Update colours for the textfields
 		- Add icons to all buttons 
 		- Add icons to table header
-		- Prevent the days input from having negative values 
 		- Disable add activity button when previous activity name is empty
 		- More style on the PDF
 			- Split the activities more, add sub headers

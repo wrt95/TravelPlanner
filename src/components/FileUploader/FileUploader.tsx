@@ -57,6 +57,7 @@ export const FileUploader = ({
 						<input
 							type="file"
 							ref={fileInputRef}
+							id={id}
 							onChange={handleFileChange}
 							accept="image/png, image/jpeg, image/jpg, image/heic"
 							className={classes.hiddenInput}

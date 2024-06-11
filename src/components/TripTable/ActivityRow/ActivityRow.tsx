@@ -68,7 +68,11 @@ export const ActivityRow = ({
 				</div>
 			</td>
 			<td>
-				<Button onClick={onRemove} variant="danger">
+				<Button
+					onClick={onRemove}
+					variant="danger"
+					aria-label="Delete activity"
+				>
 					<FaTrash />
 				</Button>
 			</td>

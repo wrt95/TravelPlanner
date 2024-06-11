@@ -37,7 +37,7 @@ export const TripDayTable = ({
 						<th>Important Information</th>
 						<th>Other Information</th>
 						<th>Image Upload</th>
-						<th></th>
+						<th className={classes.deleteTableHeader}>Delete activity</th>
 					</tr>
 				</thead>
 				<tbody>
