@@ -35,6 +35,12 @@ export const TripDayTable = ({
 	onImageUpload,
 	onDeleteDay,
 }: TripDayTableProps): ReactElement => {
+	console.log('activities', activities);
+
+	const lastIndex = activities.length - 1;
+	const lastElementActivity = activities[lastIndex].activity;
+	const isLastElementAcitivityEmpty = lastElementActivity === '';
+
 	return (
 		<div className={classes.tripDay}>
 			<h3 className={classes.tripHeader}>Day {day}</h3>
@@ -73,7 +79,17 @@ export const TripDayTable = ({
 				</tbody>
 			</table>
 			<div className={classes.dayActions}>
-				<Button onClick={onAddActivity} icon={<FaPlus />}>
+				<Button
+					onClick={onAddActivity}
+					disabled={isLastElementAcitivityEmpty}
+					icon={<FaPlus />}
+					className={isLastElementAcitivityEmpty ? classes.disabled : undefined}
+					title={
+						isLastElementAcitivityEmpty
+							? 'Add some text to the acitivy on the final row to be able to add more activities'
+							: 'Add another activity'
+					}
+				>
 					Add another activity
 				</Button>
 				<Button onClick={onDeleteDay} variant="danger" icon={<FaTrash />}>

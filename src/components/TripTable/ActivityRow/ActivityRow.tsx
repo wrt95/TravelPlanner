@@ -43,7 +43,6 @@ export const ActivityRow = ({
 				<TextArea
 					value={activity.importantInformation ?? ''}
 					onChange={handleChangeImportant}
-					required
 					label="Important Information"
 					hideLabel
 				/>
@@ -52,7 +51,6 @@ export const ActivityRow = ({
 				<TextArea
 					value={activity.otherInformation ?? ''}
 					onChange={handleChangeOther}
-					required
 					label="Other Information"
 					hideLabel
 				/>

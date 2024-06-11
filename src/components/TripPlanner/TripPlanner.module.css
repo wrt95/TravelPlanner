@@ -24,6 +24,13 @@
 	border-bottom: 2px solid #f4c952;
 }
 
+.nonStickyHeader {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding-block: 2rem;
+}
+
 .headerWrapper {
 	display: flex;
 	align-items: flex-end;
@@ -66,4 +73,8 @@
 .subHeaderIcon {
 	margin-left: 0.5rem;
 	font-size: 30px;
+}
+
+.formWrapper {
+	margin-top: 2rem;
 }

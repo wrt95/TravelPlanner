@@ -19,7 +19,7 @@
 }
 
 .input {
-	border: 1px solid var(--input-border-color);
+	border: 2px solid var(--input-border-color);
 	padding: var(--input-padding);
 	border-radius: var(--input-border-radius);
 	background-color: var(--input-background-color);
@@ -27,13 +27,14 @@
 	transition: border-color 0.3s;
 	width: 100%;
 	box-sizing: border-box;
+	font-size: 20px;
 }
 
-.styled-input:hover {
+.input:hover {
 	border-color: var(--input-hover-border-color);
 }
 
-.styled-input:focus {
+.input:focus {
 	border-color: var(--input-focus-border-color);
 	outline: none;
 }

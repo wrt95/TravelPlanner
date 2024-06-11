@@ -45,7 +45,12 @@ export const TripTable = (): ReactElement => {
 	const handleRemoveRow = (dayIndex: number, activityIndex: number) => {
 		const newTripDays: TripDay[] = [...tripData.days];
 		newTripDays[dayIndex].activities.splice(activityIndex, 1);
-		setTripData({ ...tripData, days: newTripDays });
+
+		const confirmText: string =
+			'Are you sure you want to delete this activity? This action cannot be reverted.';
+		if (window.confirm(confirmText)) {
+			setTripData({ ...tripData, days: newTripDays });
+		}
 	};
 
 	const handleDeleteDay = (dayIndex: number) => {
@@ -58,7 +63,11 @@ export const TripTable = (): ReactElement => {
 				day: index + 1,
 			})
 		);
-		setTripData({ ...tripData, days: dataMappedWithNewDays });
+		const confirmText: string =
+			'Are you sure you want to delete the day? This action cannot be reverted.';
+		if (window.confirm(confirmText)) {
+			setTripData({ ...tripData, days: dataMappedWithNewDays });
+		}
 	};
 
 	const handleAddDay = () => {

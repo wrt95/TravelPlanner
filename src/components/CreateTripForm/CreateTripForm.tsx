@@ -59,7 +59,7 @@ export const CreateTripForm = (): ReactElement => {
 					label="Number of days of your trip"
 					min={1}
 				/>
-				<Button type="submit" icon={<FaPlus />}>
+				<Button className={classes.button} type="submit" icon={<FaPlus />}>
 					Create Plan
 				</Button>
 			</form>

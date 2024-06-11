@@ -30,7 +30,13 @@ export const TripPlanner = (): ReactElement => {
 
 	return (
 		<div className={classes.pageWrapper}>
-			<div className={classes.stickyHeader}>
+			<div
+				className={
+					tripData.days.length > 0
+						? classes.stickyHeader
+						: classes.nonStickyHeader
+				}
+			>
 				<div className={classes.headerWrapper}>
 					<GiPalmTree className={classes.headerIcon} />
 					<h1 className={classes.pageHeader}>Travel Planner</h1>
@@ -39,7 +45,9 @@ export const TripPlanner = (): ReactElement => {
 					/>
 				</div>
 				{tripData.days.length === 0 ? (
-					<CreateTripForm />
+					<div className={classes.formWrapper}>
+						<CreateTripForm />
+					</div>
 				) : (
 					<>
 						<div className={classes.subHeader}>

@@ -8,7 +8,6 @@ import { TripPlanner } from './components/TripPlanner';
 		- Update colours for the buttons
 		- Update colours for the textfields
 		- Make it possible to edit destination
-		- Disable add activity button when previous activity name is empty
 		- Add pricing column
 		- Make it possible to have several trips
 			- Create a dashboard - list of my trips and a button to create new trip
@@ -18,6 +17,8 @@ import { TripPlanner } from './components/TripPlanner';
 			- Fix layout and how things are set up
 			- Add icons
 			- Fix size of images
+			- Only show
+		- Make it possible to collapse the different day cards
 */
 
 export const App = () => {

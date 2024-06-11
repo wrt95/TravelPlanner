@@ -46,3 +46,7 @@ label {
 	font-size: var(--text-font-size);
 	font-weight: bold;
 }
+
+button {
+	font-size: 18px;
+}
