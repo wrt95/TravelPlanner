@@ -47,7 +47,6 @@ export const CreateTripForm = (): ReactElement => {
 			<form className={classes.form} onSubmit={handleSubmit}>
 				<Textfield
 					type="text"
-					id="destination"
 					name="destination"
 					required
 					label="Where are you going?"
@@ -55,7 +54,6 @@ export const CreateTripForm = (): ReactElement => {
 				<Textfield
 					type="number"
 					name="days"
-					id="days"
 					required
 					label="Number of days of your trip"
 				/>

@@ -4,13 +4,11 @@ import { TripPlanner } from './components/TripPlanner';
 /*
 	TODO LIST
 		- context for each table activity
-		- Make it all save in the local storage
 		- Update colours for background and the "cards"
 		- Update colours for the buttons
 		- Update colours for the textfields
 		- Add icons to all buttons 
 		- Add icons to table header
-		- Create hooks of the useEffects
 		- Prevent the days input from having negative values 
 		- Disable add activity button when previous activity name is empty
 		- More style on the PDF

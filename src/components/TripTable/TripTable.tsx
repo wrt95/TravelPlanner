@@ -20,12 +20,6 @@ export const TripTable = (): ReactElement => {
 		field: keyof TripActivity,
 		value: string | File | null
 	) => {
-		console.log({
-			dayIndex,
-			activityIndex,
-			field,
-			value,
-		});
 		const newTripDays = [...tripData.days];
 		if (field === 'image') {
 			newTripDays[dayIndex].activities[activityIndex][field] =

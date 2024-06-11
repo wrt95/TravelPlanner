@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
 import { Trip } from '../../types/TripDay';
+import { TRIP_DATA_LOCAL_STORAGE_KEY } from '../../components/constants/localStorageConstants';
 
 export type TripContextProps = {
 	tripData: Trip;
@@ -23,7 +24,10 @@ export type TripContextProviderProps = {
 };
 
 export const TripContextProvider = ({ children }: TripContextProviderProps) => {
-	const [tripData, setTripData] = useState<Trip>(initialTrip);
+	const savedTripData = localStorage.getItem(TRIP_DATA_LOCAL_STORAGE_KEY);
+	const [tripData, setTripData] = useState<Trip>(
+		savedTripData ? JSON.parse(savedTripData) : initialTrip
+	);
 
 	return (
 		<TripContext.Provider
