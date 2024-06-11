@@ -1,27 +1,17 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import { TripActivity, TripDay } from '../../types/TripDay';
 import { TripDayTable } from './TripDayTable';
 import { Button } from '../Button';
+import { emptyTripActivity } from '../../utils/emptyTripActivity';
+import { useTripContext } from '../../contexts/TripContext';
 
-const newDay: TripActivity = {
-	activity: '',
-	importantInformation: '',
-	otherInformation: '',
-	image: null,
-};
-type TripTableProps = {
-	tripData: TripDay[];
-	setTripData: React.Dispatch<React.SetStateAction<TripDay[]>>;
-};
+export const TripTable = (): ReactElement => {
+	const { tripData, setTripData } = useTripContext();
 
-export const TripTable = ({
-	tripData,
-	setTripData,
-}: TripTableProps): ReactElement => {
 	const handleAddRow = (dayIndex: number) => {
-		const newTripData = [...tripData];
-		newTripData[dayIndex].activities.push(newDay);
-		setTripData(newTripData);
+		const newTripDays: TripDay[] = [...tripData.days];
+		newTripDays[dayIndex].activities.push({ ...emptyTripActivity });
+		setTripData({ ...tripData, days: newTripDays });
 	};
 
 	const handleActivityChange = (
@@ -30,14 +20,20 @@ export const TripTable = ({
 		field: keyof TripActivity,
 		value: string | File | null
 	) => {
-		const newTripDays = [...tripData];
+		console.log({
+			dayIndex,
+			activityIndex,
+			field,
+			value,
+		});
+		const newTripDays = [...tripData.days];
 		if (field === 'image') {
 			newTripDays[dayIndex].activities[activityIndex][field] =
 				value as File | null;
 		} else {
 			newTripDays[dayIndex].activities[activityIndex][field] = value as string;
 		}
-		setTripData(newTripDays);
+		setTripData({ ...tripData, days: newTripDays });
 	};
 
 	const handleImageUpload = (
@@ -45,43 +41,42 @@ export const TripTable = ({
 		activityIndex: number,
 		file: File | null
 	) => {
-		const newTripDays = [...tripData];
+		const newTripDays: TripDay[] = [...tripData.days];
 		newTripDays[dayIndex].activities[activityIndex].image = file;
-		setTripData(newTripDays);
+		setTripData({ ...tripData, days: newTripDays });
 	};
 
 	const handleRemoveRow = (dayIndex: number, activityIndex: number) => {
-		const newTripData = [...tripData];
-		newTripData[dayIndex].activities.splice(activityIndex, 1);
-		setTripData(newTripData);
+		const newTripDays: TripDay[] = [...tripData.days];
+		newTripDays[dayIndex].activities.splice(activityIndex, 1);
+		setTripData({ ...tripData, days: newTripDays });
 	};
 
 	const handleDeleteDay = (dayIndex: number) => {
-		const newTripData = [...tripData];
-		newTripData.splice(dayIndex, 1);
+		const newTripDays: TripDay[] = [...tripData.days];
+		newTripDays.splice(dayIndex, 1);
 
-		const dataMappedWithNewDays = newTripData.map(
+		const dataMappedWithNewDays = newTripDays.map(
 			(data: TripDay, index: number) => ({
 				...data,
 				day: index + 1,
 			})
 		);
-		setTripData(dataMappedWithNewDays);
+		setTripData({ ...tripData, days: dataMappedWithNewDays });
 	};
 
 	const handleAddDay = () => {
-		setTripData([
-			...tripData,
-			{
-				day: tripData.length + 1,
-				activities: [newDay],
-			},
-		]);
+		const newTripDay: TripDay = {
+			day: tripData.days.length + 1,
+			activities: [emptyTripActivity],
+		};
+		const updatedTripDays: TripDay[] = [...tripData.days, newTripDay];
+		setTripData({ ...tripData, days: updatedTripDays });
 	};
 
 	return (
 		<div>
-			{tripData.map((tripDay, dayIndex) => (
+			{tripData.days.map((tripDay: TripDay, dayIndex: number) => (
 				<TripDayTable
 					key={tripDay.day}
 					day={tripDay.day}

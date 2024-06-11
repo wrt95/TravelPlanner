@@ -19,6 +19,7 @@ export const ActivityRow = ({
 	onImageUpload,
 	onRemove,
 }: ActivityRowProps): ReactElement => {
+	console.log('ACTIVITY', activity);
 	const handleChangeActivity = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		onChange('activity', e.target.value);
 	};

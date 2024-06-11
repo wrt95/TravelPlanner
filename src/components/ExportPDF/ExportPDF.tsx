@@ -10,6 +10,7 @@ import {
 	PDFDownloadLink,
 } from '@react-pdf/renderer';
 import { Button } from '../Button';
+import { useTripContext } from '../../contexts/TripContext';
 
 const styles = StyleSheet.create({
 	page: {
@@ -48,16 +49,14 @@ const styles = StyleSheet.create({
 	},
 });
 
-type ExportPDFProps = {
-	tripDays: TripDay[];
-};
+export const ExportPDF = (): ReactElement => {
+	const { tripData } = useTripContext();
 
-export const ExportPDF = ({ tripDays }: ExportPDFProps): ReactElement => {
 	return (
 		<PDFDownloadLink
 			document={
 				<Document>
-					{tripDays.map((tripDay, index) => (
+					{tripData.days.map((tripDay: TripDay, index: number) => (
 						<Page key={index} style={styles.page}>
 							<Text style={styles.header}>Day {tripDay.day}</Text>
 							{tripDay.activities.map((activity, activityIndex) => (
