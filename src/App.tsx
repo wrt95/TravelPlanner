@@ -9,7 +9,6 @@ import { ExportPDF } from './components/ExportPDF';
 /*
 	TODO LIST
 		- useContext
-		- Logic to rename the days when deleting a day
 		- Textfield to add name of the trip 
 		- Make it all save in the local storage
 		- Update colours for background and the "cards"
