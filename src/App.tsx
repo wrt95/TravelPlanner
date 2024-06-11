@@ -3,8 +3,7 @@ import { TripPlanner } from './components/TripPlanner';
 
 /*
 	TODO LIST
-
-		- Textfield to add name of the trip 
+		- context for each table activity
 		- Make it all save in the local storage
 		- Update colours for background and the "cards"
 		- Update colours for the buttons
