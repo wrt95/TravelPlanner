@@ -1,4 +1,7 @@
 .button {
+	display: flex;
+	gap: 0.5rem;
+	align-items: center;
 	background-color: var(--button-color);
 	color: white;
 	border: none;
@@ -26,4 +29,8 @@
 
 .danger:active {
 	background-color: #b71c1c; /* TODO MAKE VARIABLE */
+}
+
+.iconWrapper {
+	display: contents;
 }

@@ -3,6 +3,7 @@ import classes from './TripDayTable.module.css';
 import { ActivityRow } from '../ActivityRow';
 import { TripActivity } from '../../../types/TripDay';
 import { Button } from '../../Button';
+import { FaPlus, FaTrash } from 'react-icons/fa';
 
 type TripDayTableProps = {
 	day: number;
@@ -53,8 +54,10 @@ export const TripDayTable = ({
 				</tbody>
 			</table>
 			<div className={classes.dayActions}>
-				<Button onClick={onAddActivity}>Add another activity</Button>
-				<Button onClick={onDeleteDay} variant="danger">
+				<Button onClick={onAddActivity} icon={<FaPlus />}>
+					Add another activity
+				</Button>
+				<Button onClick={onDeleteDay} variant="danger" icon={<FaTrash />}>
 					Delete day
 				</Button>
 			</div>

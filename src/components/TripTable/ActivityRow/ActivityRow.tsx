@@ -72,9 +72,8 @@ export const ActivityRow = ({
 					onClick={onRemove}
 					variant="danger"
 					aria-label="Delete activity"
-				>
-					<FaTrash />
-				</Button>
+					icon={<FaTrash />}
+				/>
 			</td>
 		</tr>
 	);

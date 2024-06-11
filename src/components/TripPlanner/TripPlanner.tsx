@@ -9,6 +9,9 @@ import { initialTrip } from '../../contexts/TripContext/TripContext';
 import { useLocalStorageLoad } from '../../hooks/useLocalStorageLoad';
 import { useLocalStorageSave } from '../../hooks/useLocalStorageSave';
 import { TRIP_DATA_LOCAL_STORAGE_KEY } from '../constants/localStorageConstants';
+import { GiPalmTree, GiCommercialAirplane, GiSuitcase } from 'react-icons/gi';
+import cn from 'classnames';
+import { FaTrash } from 'react-icons/fa';
 
 export const TripPlanner = (): ReactElement => {
 	const { tripData, setTripData } = useTripContext();
@@ -27,21 +30,31 @@ export const TripPlanner = (): ReactElement => {
 
 	return (
 		<div className={classes.pageWrapper}>
-			<h1 className={classes.pageHeader}>Travel Planner</h1>
+			<div className={classes.headerWrapper}>
+				<GiPalmTree className={classes.headerIcon} />
+				<h1 className={classes.pageHeader}>Travel Planner</h1>
+				<GiPalmTree
+					className={cn(classes.headerIcon, classes.rightHeaderIcon)}
+				/>
+			</div>
 			{tripData.days.length === 0 ? (
 				<CreateTripForm />
 			) : (
-				<p className={classes.tripLength}>
-					Your trip to "{tripData.destination}" will be {tripData.days.length}{' '}
-					days
-				</p>
+				<div className={classes.subHeader}>
+					<p className={classes.tripLength}>
+						Your trip to "{tripData.destination}" will be {tripData.days.length}{' '}
+						day{tripData.days.length === 1 ? '' : 's'}
+					</p>
+					<GiCommercialAirplane className={classes.subHeaderIcon} />
+					<GiSuitcase className={classes.subHeaderIcon} />
+				</div>
 			)}
 			{tripData && tripData.days.length > 0 && (
 				<>
 					<TripTable />
 					<div className={classes.actionButtons}>
 						<ExportPDF />
-						<Button onClick={resetData} variant="danger">
+						<Button onClick={resetData} variant="danger" icon={<FaTrash />}>
 							Reset form
 						</Button>
 					</div>

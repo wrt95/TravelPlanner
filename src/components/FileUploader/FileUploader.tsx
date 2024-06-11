@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useId, useRef, useState } from 'react';
 import classes from './FileUploader.module.css';
 import { Button } from '../Button';
-import { FaTimes } from 'react-icons/fa';
+import { FaPlus, FaTimes } from 'react-icons/fa';
 
 type FileUploaderProps = {
 	file: File | null;
@@ -51,7 +51,11 @@ export const FileUploader = ({
 			<div className={classes.fileUploadContainer}>
 				{!fileName && (
 					<div className={classes.center}>
-						<Button type="button" onClick={handleClickUploadButton}>
+						<Button
+							type="button"
+							onClick={handleClickUploadButton}
+							icon={<FaPlus />}
+						>
 							Upload Image
 						</Button>
 						<input

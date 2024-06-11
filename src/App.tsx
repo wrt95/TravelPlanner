@@ -7,7 +7,7 @@ import { TripPlanner } from './components/TripPlanner';
 		- Update colours for background and the "cards"
 		- Update colours for the buttons
 		- Update colours for the textfields
-		- Add icons to all buttons 
+		- Make it possible to edit destination
 		- Add icons to table header
 		- Disable add activity button when previous activity name is empty
 		- More style on the PDF

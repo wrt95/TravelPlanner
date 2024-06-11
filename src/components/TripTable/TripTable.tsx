@@ -4,6 +4,7 @@ import { TripDayTable } from './TripDayTable';
 import { Button } from '../Button';
 import { emptyTripActivity } from '../../utils/emptyTripActivity';
 import { useTripContext } from '../../contexts/TripContext';
+import { FaPlus } from 'react-icons/fa';
 
 export const TripTable = (): ReactElement => {
 	const { tripData, setTripData } = useTripContext();
@@ -88,7 +89,9 @@ export const TripTable = (): ReactElement => {
 					onDeleteDay={() => handleDeleteDay(dayIndex)}
 				/>
 			))}
-			<Button onClick={handleAddDay}>Add Another Day</Button>
+			<Button onClick={handleAddDay} icon={<FaPlus />}>
+				Add Another Day
+			</Button>
 		</div>
 	);
 };

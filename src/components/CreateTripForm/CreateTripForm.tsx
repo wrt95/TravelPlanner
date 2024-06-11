@@ -5,6 +5,7 @@ import { Button } from '../Button';
 import { useTripContext } from '../../contexts/TripContext';
 import { Trip, TripDay } from '../../types/TripDay';
 import { emptyTripActivity } from '../../utils/emptyTripActivity';
+import { FaPlus } from 'react-icons/fa';
 
 type CreateTripFormData = {
 	destination: string;
@@ -58,7 +59,9 @@ export const CreateTripForm = (): ReactElement => {
 					label="Number of days of your trip"
 					min={1}
 				/>
-				<Button type="submit">Create Plan</Button>
+				<Button type="submit" icon={<FaPlus />}>
+					Create Plan
+				</Button>
 			</form>
 		</>
 	);

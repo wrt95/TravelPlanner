@@ -10,14 +10,29 @@
 	background-color: #f4ebd3;
 }
 
+.headerWrapper {
+	display: flex;
+	align-items: flex-end;
+	gap: 1.5rem;
+}
+
+.headerIcon {
+	font-size: 100px;
+}
+
+.rightHeaderIcon {
+	transform: scaleX(-1);
+}
+
 .pageHeader {
 	font-size: 50px;
+	margin: 0;
+	padding: 0;
 }
 
 .tripLength {
 	font-size: 25px;
 	font-weight: bold;
-	margin-top: 2rem;
 }
 
 .actionButtons {
@@ -25,4 +40,15 @@
 	gap: 2rem;
 	margin-top: 2rem;
 	align-items: center;
+}
+
+.subHeader {
+	display: flex;
+	align-items: center;
+	margin-top: 2rem;
+}
+
+.subHeaderIcon {
+	margin-left: 0.5rem;
+	font-size: 30px;
 }

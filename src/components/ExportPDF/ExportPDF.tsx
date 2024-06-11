@@ -11,6 +11,7 @@ import {
 } from '@react-pdf/renderer';
 import { Button } from '../Button';
 import { useTripContext } from '../../contexts/TripContext';
+import { FaDownload } from 'react-icons/fa';
 
 const styles = StyleSheet.create({
 	page: {
@@ -47,6 +48,9 @@ const styles = StyleSheet.create({
 		textAlign: 'center',
 		marginTop: 20,
 	},
+	downloadLink: {
+		textDecoration: 'none',
+	},
 });
 
 export const ExportPDF = (): ReactElement => {
@@ -54,6 +58,7 @@ export const ExportPDF = (): ReactElement => {
 
 	return (
 		<PDFDownloadLink
+			style={styles.downloadLink}
 			document={
 				<Document>
 					{tripData.days.map((tripDay: TripDay, index: number) => (
@@ -87,7 +92,7 @@ export const ExportPDF = (): ReactElement => {
 					<View>Loading...</View>
 				) : (
 					<View style={styles.downloadButton}>
-						<Button>Download PDF</Button>
+						<Button icon={<FaDownload />}>Download PDF</Button>
 					</View>
 				)
 			}
