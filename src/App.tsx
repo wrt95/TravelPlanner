@@ -9,13 +9,15 @@ import { TripPlanner } from './components/TripPlanner';
 		- Update colours for the textfields
 		- Make it possible to edit destination
 		- Disable add activity button when previous activity name is empty
-		- More style on the PDF
-			- Split the activities more, add sub headers
-		- Style the images in the PDF
 		- Add pricing column
 		- Make it possible to have several trips
 			- Create a dashboard - list of my trips and a button to create new trip
 			- Managed by routing
+		- Fix the PDF
+			- plit the activities more, add sub headers
+			- Fix layout and how things are set up
+			- Add icons
+			- Fix size of images
 */
 
 export const App = () => {
