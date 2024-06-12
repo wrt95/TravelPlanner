@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import classes from './TripPlanner.module.css';
 import { CreateTripForm } from '../CreateTripForm';
-import { TripTable } from '../TripTable';
+import { TripDayList } from '../TripDayList';
 import { Button } from '../Button';
 import { ExportPDF } from '../ExportPDF';
 import { useTripContext } from '../../contexts/TripContext';
@@ -68,7 +68,7 @@ export const TripPlanner = (): ReactElement => {
 					</>
 				)}
 			</div>
-			{tripData && tripData.days.length > 0 && <TripTable />}
+			{tripData && tripData.days.length > 0 && <TripDayList />}
 		</div>
 	);
 };

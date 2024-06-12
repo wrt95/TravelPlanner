@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import classes from './TripTable.module.css';
+import classes from './TripDayList.module.css';
 import { TripActivity, TripDay } from '../../types/Trip';
 import { TripDayTable } from './TripDayTable';
 import { Button } from '../Button';
@@ -7,7 +7,7 @@ import { emptyTripActivity } from '../../utils/emptyTripActivity';
 import { useTripContext } from '../../contexts/TripContext';
 import { FaPlus } from 'react-icons/fa';
 
-export const TripTable = (): ReactElement => {
+export const TripDayList = (): ReactElement => {
 	const { tripData, setTripData } = useTripContext();
 
 	const handleAddRow = (dayIndex: number) => {
