@@ -5,7 +5,7 @@
 .inputLabel {
 	display: block;
 	margin-bottom: 5px;
-	color: var(--primary-color);
+	color: var(--text-color);
 }
 
 .styledInput {

@@ -6,8 +6,7 @@
 	padding-inline: 5rem;
 	margin: 0;
 	height: 100%;
-	min-height: 100vh;
-	background-color: #f4ebd3;
+	flex: 1;
 }
 
 .stickyHeader {
@@ -15,7 +14,7 @@
 	position: sticky;
 	z-index: 999999;
 	top: 0;
-	background-color: #f4ebd3;
+	background-color: var(--background-color);
 	width: 100%;
 	display: flex;
 	flex-direction: column;

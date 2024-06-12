@@ -1,11 +1,4 @@
 .inputWrapper {
-	--input-border-color: #757575;
-	--input-hover-border-color: #0277bd;
-	--input-focus-border-color: #0288d1;
-	--input-background-color: #ffffff;
-	--input-padding: 10px;
-	--input-border-radius: 5px;
-
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -15,7 +8,7 @@
 
 .inputLabel {
 	margin-bottom: 0.25rem;
-	color: var(--primary-color);
+	color: var(--text-color);
 }
 
 .input {

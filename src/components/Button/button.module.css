@@ -3,7 +3,7 @@
 	gap: 0.5rem;
 	align-items: center;
 	background-color: var(--button-color);
-	color: white;
+	color: var(--text-color);
 	border: none;
 	padding: 10px 20px;
 	cursor: pointer;
@@ -21,6 +21,7 @@
 
 .danger {
 	background-color: var(--error-color);
+	color: #ffffff;
 }
 
 .danger:hover {
