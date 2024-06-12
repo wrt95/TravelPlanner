@@ -16,6 +16,8 @@
 	); /* Slightly darker shade for hover */
 	--button-active-color: #01579b; /* Even darker shade for active */
 
+	--accordion-color-open: #ffb74d20;
+
 	/* --success-color: #388e3c; 
 	--warning-color: #fbc02d;*/
 	--error-color: #d32f2f;
