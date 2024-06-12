@@ -3,7 +3,7 @@ import classes from './CreateTripForm.module.css';
 import { Textfield } from '../Textfield';
 import { Button } from '../Button';
 import { useTripContext } from '../../contexts/TripContext';
-import { Trip, TripDay } from '../../types/TripDay';
+import { Trip, TripDay } from '../../types/Trip';
 import { emptyTripActivity } from '../../utils/emptyTripActivity';
 import { FaPlus } from 'react-icons/fa';
 

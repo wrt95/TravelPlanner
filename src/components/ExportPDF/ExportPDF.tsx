@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { TripDay } from '../../types/TripDay';
+import { TripDay } from '../../types/Trip';
 import {
 	Document,
 	Page,

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import classes from './TripTable.module.css';
-import { TripActivity, TripDay } from '../../types/TripDay';
+import { TripActivity, TripDay } from '../../types/Trip';
 import { TripDayTable } from './TripDayTable';
 import { Button } from '../Button';
 import { emptyTripActivity } from '../../utils/emptyTripActivity';

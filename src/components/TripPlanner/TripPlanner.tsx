@@ -6,8 +6,8 @@ import { Button } from '../Button';
 import { ExportPDF } from '../ExportPDF';
 import { useTripContext } from '../../contexts/TripContext';
 import { initialTrip } from '../../contexts/TripContext/TripContext';
-import { useLocalStorageLoad } from '../../hooks/useLocalStorageLoad';
-import { useLocalStorageSave } from '../../hooks/useLocalStorageSave';
+import { useLocalStorageLoadTrip } from '../../hooks/useLocalStorageLoadTrip';
+import { useLocalStorageSaveTrip } from '../../hooks/useLocalStorageSaveTrip';
 import { TRIP_DATA_LOCAL_STORAGE_KEY } from '../constants/localStorageConstants';
 import { GiPalmTree, GiCommercialAirplane, GiSuitcase } from 'react-icons/gi';
 import cn from 'classnames';
@@ -16,8 +16,8 @@ import { FaTrash } from 'react-icons/fa';
 export const TripPlanner = (): ReactElement => {
 	const { tripData, setTripData } = useTripContext();
 
-	useLocalStorageLoad(TRIP_DATA_LOCAL_STORAGE_KEY, setTripData);
-	useLocalStorageSave(TRIP_DATA_LOCAL_STORAGE_KEY, tripData);
+	useLocalStorageLoadTrip(TRIP_DATA_LOCAL_STORAGE_KEY, setTripData);
+	useLocalStorageSaveTrip(TRIP_DATA_LOCAL_STORAGE_KEY, tripData);
 
 	const resetData = () => {
 		const verificationText: string =

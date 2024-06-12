@@ -1,6 +1,8 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Trip } from '../../types/TripDay';
+import { Trip } from '../../types/Trip';
 import { TRIP_DATA_LOCAL_STORAGE_KEY } from '../../components/constants/localStorageConstants';
+import { SaveableTrip } from '../../types/SaveabletTrip';
+import { mapSaveableTripToTrip } from '../../utils/localStorageUtils';
 
 export type TripContextProps = {
 	tripData: Trip;
@@ -25,9 +27,7 @@ export type TripContextProviderProps = {
 
 export const TripContextProvider = ({ children }: TripContextProviderProps) => {
 	const savedTripData = localStorage.getItem(TRIP_DATA_LOCAL_STORAGE_KEY);
-	const [tripData, setTripData] = useState<Trip>(
-		savedTripData ? JSON.parse(savedTripData) : initialTrip
-	);
+	const [tripData, setTripData] = useState<Trip>(getTripData(savedTripData));
 
 	return (
 		<TripContext.Provider
@@ -47,4 +47,13 @@ export const useTripContext = (): TripContextProps => {
 		throw new Error('useTripContext must be used within a TripContextProvider');
 	}
 	return context;
+};
+
+const getTripData = (savedTripData: string | null): Trip => {
+	if (savedTripData === null) {
+		return initialTrip;
+	}
+	const saveableTripParsed = JSON.parse(savedTripData) as SaveableTrip;
+	const trip: Trip = mapSaveableTripToTrip(saveableTripParsed);
+	return trip;
 };

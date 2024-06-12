@@ -1,6 +1,6 @@
 import { ReactElement, ChangeEvent } from 'react';
 import classes from './ActivityRow.module.css';
-import { TripActivity } from '../../../types/TripDay';
+import { TripActivity } from '../../../types/Trip';
 import { Button } from '../../Button';
 import { FileUploader } from '../../FileUploader';
 import { TextArea } from '../../TextArea';

@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 import classes from './TripDayTable.module.css';
 import { ActivityRow } from '../ActivityRow';
-import { TripActivity } from '../../../types/TripDay';
+import { TripActivity } from '../../../types/Trip';
 import { Button } from '../../Button';
 import {
 	FaClipboardList,
@@ -35,8 +35,6 @@ export const TripDayTable = ({
 	onImageUpload,
 	onDeleteDay,
 }: TripDayTableProps): ReactElement => {
-	console.log('activities', activities);
-
 	const lastIndex = activities.length - 1;
 	const lastElementActivity = activities[lastIndex].activity;
 	const isLastElementAcitivityEmpty = lastElementActivity === '';
