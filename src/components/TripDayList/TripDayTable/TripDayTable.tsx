@@ -1,7 +1,7 @@
-import { ReactElement, useState } from 'react';
+import { ReactElement } from 'react';
 import classes from './TripDayTable.module.css';
 import { ActivityRow } from '../ActivityRow';
-import { TripActivity } from '../../../types/Trip';
+import { TripActivity, TripActivityTextField } from '../../../types/Trip';
 import { Button } from '../../Button';
 import {
 	FaArrowDown,
@@ -22,11 +22,13 @@ type TripDayTableProps = {
 	onRemoveActivity: (activityIndex: number) => void;
 	onActivityChange: (
 		activityIndex: number,
-		field: keyof TripActivity,
+		field: TripActivityTextField,
 		value: string
 	) => void;
 	onImageUpload: (activityIndex: number, file: File | null) => void;
 	onDeleteDay: () => void;
+	isAccordionOpen: boolean;
+	setAccordionOpen: (isOpen: boolean) => void;
 };
 
 export const TripDayTable = ({
@@ -37,33 +39,34 @@ export const TripDayTable = ({
 	onActivityChange,
 	onImageUpload,
 	onDeleteDay,
+	isAccordionOpen,
+	setAccordionOpen,
 }: TripDayTableProps): ReactElement => {
-	const [isOpen, setIsOpen] = useState<boolean>(true); // TODO - Save on state
-
 	const lastIndex = activities.length - 1;
 	const lastElementActivity = activities[lastIndex].activity;
 	const isLastElementAcitivityEmpty = lastElementActivity === '';
 
 	const handleClickButton = () => {
-		setIsOpen((currentState) => !currentState);
+		setAccordionOpen(!isAccordionOpen);
 	};
+
 	return (
 		<div className={classes.wrapper}>
 			<button
 				onClick={handleClickButton}
 				className={cn(
 					classes.tripDayButton,
-					isOpen && classes.tripDayButtonOpen
+					isAccordionOpen && classes.tripDayButtonOpen
 				)}
 			>
 				<h3 className={classes.tripHeader}>Day {day}</h3>
-				{isOpen ? (
+				{isAccordionOpen ? (
 					<FaArrowUp className={classes.accordionIcon} />
 				) : (
 					<FaArrowDown className={classes.accordionIcon} />
 				)}
 			</button>
-			{isOpen && (
+			{isAccordionOpen && (
 				<div className={classes.tripDay}>
 					<table className={classes.table}>
 						<thead>

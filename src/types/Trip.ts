@@ -8,6 +8,7 @@ export type TripActivity = {
 export type TripDay = {
 	day: number;
 	activities: TripActivity[];
+	isAccordionOpen: boolean;
 };
 
 export type Trip = {
@@ -15,3 +16,8 @@ export type Trip = {
 	days: TripDay[];
 	// TODO price
 };
+
+export type TripActivityTextField =
+	| 'activity'
+	| 'importantInformation'
+	| 'otherInformation';

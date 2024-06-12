@@ -6,6 +6,7 @@ export type SaveableTrip = {
 export type SaveableTripDay = {
 	day: number;
 	activities: SaveableTripActivity[];
+	isAccordionOpen: boolean;
 };
 
 export type SaveableTripActivity = {

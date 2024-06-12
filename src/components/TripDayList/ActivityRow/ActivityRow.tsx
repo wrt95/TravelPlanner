@@ -1,6 +1,6 @@
 import { ReactElement, ChangeEvent } from 'react';
 import classes from './ActivityRow.module.css';
-import { TripActivity } from '../../../types/Trip';
+import { TripActivity, TripActivityTextField } from '../../../types/Trip';
 import { Button } from '../../Button';
 import { FileUploader } from '../../FileUploader';
 import { TextArea } from '../../TextArea';
@@ -8,7 +8,7 @@ import { FaTrash } from 'react-icons/fa';
 
 type ActivityRowProps = {
 	activity: TripActivity;
-	onChange: (field: keyof TripActivity, value: string) => void;
+	onChange: (field: TripActivityTextField, value: string) => void;
 	onImageUpload: (file: File | null) => void;
 	onRemove: () => void;
 };

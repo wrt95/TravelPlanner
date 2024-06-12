@@ -28,6 +28,7 @@ export const CreateTripForm = (): ReactElement => {
 		const newTripData: TripDay[] = Array.from({ length: days }, (_, i) => ({
 			day: i + 1,
 			activities: [{ ...emptyTripActivity }],
+			isAccordionOpen: true,
 		}));
 		const newTrip: Trip = {
 			destination,

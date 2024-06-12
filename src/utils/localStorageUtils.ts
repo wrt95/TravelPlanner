@@ -25,6 +25,7 @@ const mapTripDaysToSaveableTripDays = async (
 			activities: await mapTripActivitiesToSaveableTripActivities(
 				day.activities
 			),
+			isAccordionOpen: day.isAccordionOpen,
 		}))
 	);
 	return saveableTripDays;
@@ -71,6 +72,7 @@ const mapSaveableTripDaysToTripDays = (
 	const tripDays: TripDay[] = saveableTripDays.map((day) => ({
 		day: day.day,
 		activities: mapSaveableTripActivitiesToTripActivities(day.activities),
+		isAccordionOpen: day.isAccordionOpen,
 	}));
 	return tripDays;
 };

@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import classes from './TripDayList.module.css';
-import { TripActivity, TripDay } from '../../types/Trip';
+import { TripActivityTextField, TripDay } from '../../types/Trip';
 import { TripDayTable } from './TripDayTable';
 import { Button } from '../Button';
 import { emptyTripActivity } from '../../utils/emptyTripActivity';
@@ -19,16 +19,12 @@ export const TripDayList = (): ReactElement => {
 	const handleActivityChange = (
 		dayIndex: number,
 		activityIndex: number,
-		field: keyof TripActivity,
-		value: string | File | null
+		field: TripActivityTextField,
+		value: string
 	) => {
 		const newTripDays = [...tripData.days];
-		if (field === 'image') {
-			newTripDays[dayIndex].activities[activityIndex][field] =
-				value as File | null;
-		} else {
-			newTripDays[dayIndex].activities[activityIndex][field] = value as string;
-		}
+		newTripDays[dayIndex].activities[activityIndex][field] = value as string;
+
 		setTripData({ ...tripData, days: newTripDays });
 	};
 
@@ -74,9 +70,17 @@ export const TripDayList = (): ReactElement => {
 		const newTripDay: TripDay = {
 			day: tripData.days.length + 1,
 			activities: [emptyTripActivity],
+			isAccordionOpen: true,
 		};
 		const updatedTripDays: TripDay[] = [...tripData.days, newTripDay];
 		setTripData({ ...tripData, days: updatedTripDays });
+	};
+
+	const handleSetAccordionOpen = (isOpen: boolean, dayIndex: number) => {
+		const newTripDays = [...tripData.days];
+		newTripDays[dayIndex].isAccordionOpen = isOpen;
+
+		setTripData({ ...tripData, days: newTripDays });
 	};
 
 	return (
@@ -97,6 +101,10 @@ export const TripDayList = (): ReactElement => {
 						handleRemoveRow(dayIndex, activityIndex)
 					}
 					onDeleteDay={() => handleDeleteDay(dayIndex)}
+					isAccordionOpen={tripDay.isAccordionOpen}
+					setAccordionOpen={(isOpen: boolean) =>
+						handleSetAccordionOpen(isOpen, dayIndex)
+					}
 				/>
 			))}
 			<Button onClick={handleAddDay} icon={<FaPlus />}>
