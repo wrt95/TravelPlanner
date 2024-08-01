@@ -1,37 +1,38 @@
 .button {
-	display: flex;
-	gap: 0.5rem;
-	align-items: center;
-	background-color: var(--button-color);
-	color: var(--text-color);
-	border: none;
-	padding: 10px 20px;
-	cursor: pointer;
-	border-radius: 5px;
-	transition: background-color 0.3s;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  background-color: var(--button-color);
+  color: var(--text-color);
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
 }
 
 .default:hover {
-	background-color: var(--button-hover-color);
+  background-color: var(--button-hover-color);
 }
 
 .default:active {
-	background-color: var(--button-active-color);
+  background-color: var(--button-active-color);
 }
 
 .danger {
-	background-color: var(--error-color);
-	color: #ffffff;
+  background-color: transparent;
+  color: var(--button-color-danger);
 }
 
 .danger:hover {
-	background-color: #c62828; /* TODO MAKE VARIABLE */
+  color: white;
+  background-color: var(--button-hover-color-danger);
 }
 
 .danger:active {
-	background-color: #b71c1c; /* TODO MAKE VARIABLE */
+  background-color: var(--button-active-color-danger);
 }
 
 .iconWrapper {
-	display: contents;
+  display: contents;
 }

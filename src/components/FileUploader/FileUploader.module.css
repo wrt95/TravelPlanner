@@ -1,71 +1,86 @@
 .inputWrapper {
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .center {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .inputLabel {
-	margin-bottom: 0.25rem;
-	color: var(--text-color);
+  margin-bottom: 0.25rem;
+  color: var(--text-color);
 }
 
 .input {
-	border: 1px solid var(--input-border-color);
-	padding: var(--input-padding);
-	border-radius: var(--input-border-radius);
-	background-color: var(--input-background-color);
-	color: var(--text-color);
-	transition: border-color 0.3s;
-	width: 100%;
-	box-sizing: border-box;
+  border: 1px solid var(--input-border-color);
+  padding: var(--input-padding);
+  border-radius: var(--input-border-radius);
+  background-color: var(--input-background-color);
+  color: var(--text-color);
+  transition: border-color 0.3s;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .styled-input:hover {
-	border-color: var(--input-hover-border-color);
+  border-color: var(--input-hover-border-color);
 }
 
 .styled-input:focus {
-	border-color: var(--input-focus-border-color);
-	outline: none;
+  border-color: var(--input-focus-border-color);
+  outline: none;
 }
 
 .hiddenLabel {
-	visibility: hidden;
-	position: absolute;
+  visibility: hidden;
+  position: absolute;
 }
 
 .hiddenInput {
-	display: none;
+  display: none;
 }
 
 .fileUploadContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fileNameContainer {
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .fileRemoveButton {
-	background: none;
-	border: none;
-	cursor: pointer;
-	padding: 0;
-	margin-left: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+  color: var(--button-color-danger);
+  padding: 0.25rem;
+  border-radius: 5px;
+}
+
+.fileRemoveButton:hover {
+  color: white;
+  background-color: var(--button-hover-color-danger);
+}
+
+.fileRemoveButton:active {
+  background-color: var(--button-active-color-danger);
 }
 
 .fileRemoveIcon {
-	color: var(--error-color);
-	font-size: 1.2em;
+  color: var(--error-color);
+  font-size: 1.2em;
 }

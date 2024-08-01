@@ -1,8 +1,12 @@
 :root {
 	--primary-color: #ffb74d;
 	--secondary-color: #ffcc80;
-	--tertiary-color: #123;
+	--tertiary-color: #f58a07;
 	--background-color: #faf3e0;
+
+	--primary-color-danger: #e02e49;
+	--secondary-color-danger: #b3253a;
+	--tertiary-color-danger: #861c2c;
 
 	/* --primary-color: #0277bd;
 	--secondary-color: #ffc107; 
@@ -11,16 +15,18 @@
 	--text-color: #2c2c2c;
 
 	--button-color: var(--primary-color);
-	--button-hover-color: var(
-		--secondary-color
-	); /* Slightly darker shade for hover */
-	--button-active-color: #01579b; /* Even darker shade for active */
+	--button-hover-color: var(--secondary-color);
+	--button-active-color: var(--tertiary-color);
+	/*--button-active-color: #01579b; /* Even darker shade for active */
+
+	--button-color-danger: var(--primary-color-danger);
+	--button-hover-color-danger: var(--secondary-color-danger);
+	--button-active-color-danger: var(--tertiary-color-danger);
 
 	--accordion-color-open: #ffb74d20;
 
 	/* --success-color: #388e3c; 
 	--warning-color: #fbc02d;*/
-	--error-color: #d32f2f;
 
 	--divider-color: #123;
 

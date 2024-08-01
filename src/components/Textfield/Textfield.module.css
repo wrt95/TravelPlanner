@@ -24,14 +24,16 @@
 }
 
 .input:hover {
-	border-color: var(--input-hover-border-color);
+	border: none;
+	outline: 2px solid var(--input-hover-border-color);
 }
 
 .input:focus {
-	border-color: var(--input-focus-border-color);
-	outline: none;
+	border: none;
+	outline: 2px solid var(--input-focus-border-color);
 }
 
 .hiddenLabel {
 	visibility: hidden;
+	position: absolute;
 }

@@ -5,6 +5,7 @@ import { Button } from '../../Button';
 import { FileUploader } from '../../FileUploader';
 import { TextArea } from '../../TextArea';
 import { FaTrash } from 'react-icons/fa';
+import { useTripContext } from '../../../contexts/TripContext';
 
 type ActivityRowProps = {
 	activity: TripActivity;
@@ -71,6 +72,7 @@ export const ActivityRow = ({
 					variant="danger"
 					aria-label="Delete activity"
 					icon={<FaTrash />}
+					// TODO - ADD DISABLED
 				/>
 			</td>
 		</tr>
