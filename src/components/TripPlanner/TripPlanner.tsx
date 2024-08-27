@@ -33,9 +33,10 @@ export const TripPlanner = (): ReactElement => {
     <div className={classes.pageWrapper}>
       <div
         className={
-          tripData.days.length > 0
-            ? classes.stickyHeader
-            : classes.nonStickyHeader
+          //tripData.days.length > 0
+          //? classes.stickyHeader
+          //  :
+          classes.nonStickyHeader
         }
       >
         <div className={classes.headerWrapper}>

@@ -1,61 +1,68 @@
 :root {
-	--primary-color: #ffb74d;
-	--secondary-color: #ffcc80;
-	--tertiary-color: #f58a07;
-	--background-color: #faf3e0;
+  /*
+  old colors
+  --primary-color: #ffb74d;
+  --secondary-color: #ffcc80;
+  --tertiary-color: #f58a07;
+  --background-color: #faf3e0;
+  */
+  --primary-color: #bfe8ff;
+  --secondary-color: #ffcc80;
+  --tertiary-color: #f58a07;
+  --background-color: #fdfeff;
 
-	--primary-color-danger: #e02e49;
-	--secondary-color-danger: #b3253a;
-	--tertiary-color-danger: #861c2c;
+  --primary-color-danger: #e02e49;
+  --secondary-color-danger: #b3253a;
+  --tertiary-color-danger: #861c2c;
 
-	/* --primary-color: #0277bd;
+  /* --primary-color: #0277bd;
 	--secondary-color: #ffc107; 
 	--accent-color: #ff5722;
 	--background-color: #e0f7fa;*/
-	--text-color: #2c2c2c;
+  --text-color: #2c2c2c;
 
-	--button-color: var(--primary-color);
-	--button-hover-color: var(--secondary-color);
-	--button-active-color: var(--tertiary-color);
-	/*--button-active-color: #01579b; /* Even darker shade for active */
+  --button-color: var(--primary-color);
+  --button-hover-color: var(--secondary-color);
+  --button-active-color: var(--tertiary-color);
+  /*--button-active-color: #01579b; /* Even darker shade for active */
 
-	--button-color-danger: var(--primary-color-danger);
-	--button-hover-color-danger: var(--secondary-color-danger);
-	--button-active-color-danger: var(--tertiary-color-danger);
+  --button-color-danger: var(--primary-color-danger);
+  --button-hover-color-danger: var(--secondary-color-danger);
+  --button-active-color-danger: var(--tertiary-color-danger);
 
-	--accordion-color-open: #ffb74d20;
+  --accordion-color-open: #bfe8ff;
 
-	/* --success-color: #388e3c; 
+  /* --success-color: #388e3c; 
 	--warning-color: #fbc02d;*/
 
-	--divider-color: #123;
+  --divider-color: #123;
 
-	--input-border-color: #757575;
-	--input-hover-border-color: #0277bd;
-	--input-focus-border-color: #0277bd;
-	--input-background-color: #ffffff;
+  --input-border-color: #757575;
+  --input-hover-border-color: #0277bd;
+  --input-focus-border-color: #0277bd;
+  --input-background-color: #ffffff;
 
-	--main-heading-font: 'Montserrat', sans-serif;
-	--body-font: 'Roboto', sans-serif;
-	--text-font-size: 20px;
+  --main-heading-font: "Montserrat", sans-serif;
+  --body-font: "Roboto", sans-serif;
+  --text-font-size: 20px;
 
-	--input-padding: 10px;
-	--input-border-radius: 5px;
+  --input-padding: 10px;
+  --input-border-radius: 5px;
 }
 
 html,
 body {
-	min-height: 100%;
-	margin: 0;
-	padding: 0;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	background-color: var(--background-color);
-	font-family: var(--body-font);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: var(--background-color);
+  font-family: var(--body-font);
 }
 
 h1,
@@ -64,19 +71,19 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--main-heading-font);
+  font-family: var(--main-heading-font);
 }
 
 p {
-	font-size: var(--text-font-size);
-	margin: 0;
+  font-size: var(--text-font-size);
+  margin: 0;
 }
 
 label {
-	font-size: var(--text-font-size);
-	font-weight: bold;
+  font-size: var(--text-font-size);
+  font-weight: bold;
 }
 
 button {
-	font-size: 18px;
+  font-size: 18px;
 }

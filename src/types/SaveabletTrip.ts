@@ -1,18 +1,16 @@
 export type SaveableTrip = {
-	destination: string;
-	days: SaveableTripDay[];
+  destination: string;
+  days: SaveableTripDay[];
 };
 
 export type SaveableTripDay = {
-	day: number;
-	activities: SaveableTripActivity[];
-	isAccordionOpen: boolean;
+  day: number;
+  activities: SaveableTripActivity[];
+  isAccordionOpen: boolean;
 };
 
 export type SaveableTripActivity = {
-	activity: string;
-	importantInformation?: string;
-	otherInformation?: string;
-	imageBase64?: string;
-	imageFileName?: string;
+  activity: string;
+  importantInformation?: string;
+  otherInformation?: string;
 };

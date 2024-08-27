@@ -71,90 +71,87 @@ th {
 */
 
 .wrapper {
-	width: 100%;
-	border-top: 2px solid #f4c952;
-	border-bottom: 2px solid #f4c952;
-}
-
-.wrapper:first-child {
-	border-top: none;
+  width: 100%;
+  border-top: 2px solid #0087d1;
+  border-bottom: 2px solid #0087d1;
+  background-color: #e5f6ff;
 }
 
 .tripDayButton {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	padding-block: 1rem;
-	padding-inline: 2rem;
-	border: none;
-	background-color: transparent;
-	cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding-block: 1rem;
+  padding-inline: 2rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .tripDayButtonOpen {
-	background-color: var(--accordion-color-open);
+  background-color: var(--accordion-color-open);
 }
 
 .accordionIcon {
-	font-size: 25px;
+  font-size: 25px;
 }
 
 .tripDay {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding-top: 0.5rem;
-	padding-bottom: 2rem;
-	padding-inline: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 0.5rem;
+  padding-bottom: 2rem;
+  padding-inline: 1rem;
 }
 
 .dayActions {
-	display: flex;
-	gap: 2rem;
-	margin-top: 10px;
+  display: flex;
+  gap: 2rem;
+  margin-top: 10px;
 }
 
 .table {
-	--last-column-width: 50px;
+  --last-column-width: 50px;
 
-	width: 100%;
-	border-collapse: collapse;
-	table-layout: fixed;
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .table th,
 .table td {
-	padding-inline: 0.5rem;
-	padding-block: 0.25rem;
+  padding-inline: 0.5rem;
+  padding-block: 0.25rem;
 }
 
 .table td th {
-	--number-of-columns-with-value: 4;
+  --number-of-columns-with-value: 4;
 
-	width: calc(
-		(100% - var(--last-column-width)) / var(--number-of-columns-with-value)
-	); /* Adjust based on the number of columns minus button width */
+  width: calc(
+    (100% - var(--last-column-width)) / var(--number-of-columns-with-value)
+  ); /* Adjust based on the number of columns minus button width */
 }
 
 .table td:last-child,
 .table th:last-child {
-	width: var(--last-column-width);
+  width: var(--last-column-width);
 }
 
 .deleteTableHeader {
-	visibility: hidden;
+  visibility: hidden;
 }
 
 th {
-	font-size: 20px;
+  font-size: 20px;
 }
 
 .icon {
-	margin-left: 1rem;
-	font-size: 20px;
+  margin-left: 1rem;
+  font-size: 20px;
 }
 
 .disabled {
-	opacity: 70%;
+  opacity: 70%;
 }

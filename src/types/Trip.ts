@@ -1,23 +1,23 @@
 export type TripActivity = {
-	activity: string;
-	importantInformation?: string;
-	otherInformation?: string;
-	image?: File | null;
+  activity: string;
+  importantInformation?: string;
+  otherInformation?: string;
+  // image?: File | null;
 };
 
 export type TripDay = {
-	day: number;
-	activities: TripActivity[];
-	isAccordionOpen: boolean;
+  day: number;
+  activities: TripActivity[];
+  isAccordionOpen: boolean;
 };
 
 export type Trip = {
-	destination: string;
-	days: TripDay[];
-	// TODO price
+  destination: string;
+  days: TripDay[];
+  // TODO price
 };
 
 export type TripActivityTextField =
-	| 'activity'
-	| 'importantInformation'
-	| 'otherInformation';
+  | "activity"
+  | "importantInformation"
+  | "otherInformation";
