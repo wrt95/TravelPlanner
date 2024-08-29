@@ -64,9 +64,6 @@ export const ExportPDF = (): ReactElement => {
                   <Text style={styles.activityText}>
                     {activity.importantInformation}
                   </Text>
-                  <Text style={styles.activityText}>
-                    {activity.otherInformation}
-                  </Text>
                 </View>
               ))}
             </Page>

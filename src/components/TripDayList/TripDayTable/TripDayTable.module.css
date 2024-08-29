@@ -72,8 +72,8 @@ th {
 
 .wrapper {
   width: 100%;
-  border-top: 2px solid #0087d1;
-  border-bottom: 2px solid #0087d1;
+  border-top: 2px solid #00517e;
+  border-bottom: 2px solid #00517e; /* TODO BORDER COLOR*/
   background-color: #e5f6ff;
 }
 

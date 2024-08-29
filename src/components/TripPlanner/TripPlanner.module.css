@@ -9,21 +9,7 @@
   flex: 1;
 }
 
-.stickyHeader {
-  position: -webkit-sticky; /* For Safari */
-  position: sticky;
-  z-index: 999999;
-  top: 0;
-  background-color: var(--background-color);
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-block: 2rem;
-  border-bottom: 2px solid #f4c952;
-}
-
-.nonStickyHeader {
+.header {
   display: flex;
   flex-direction: column;
   align-items: center;

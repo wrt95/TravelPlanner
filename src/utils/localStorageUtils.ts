@@ -47,7 +47,6 @@ const mapTripActivityToSaveableTripActivity = async (
   const saveableTripActivity: SaveableTripActivity = {
     activity: tripActivity.activity,
     importantInformation: tripActivity.importantInformation,
-    otherInformation: tripActivity.otherInformation,
   };
   return saveableTripActivity;
 };
@@ -78,7 +77,6 @@ const mapSaveableTripActivitiesToTripActivities = (
     (activity) => ({
       activity: activity.activity,
       importantInformation: activity.importantInformation || "",
-      otherInformation: activity.otherInformation || "",
     })
   );
   return tripActivities;

@@ -6,7 +6,6 @@ import { Button } from "../../Button";
 import {
   FaArrowDown,
   FaArrowUp,
-  FaClipboardList,
   FaInfoCircle,
   FaPlus,
   FaTasks,
@@ -68,17 +67,13 @@ export const TripDayTable = ({
           <table className={classes.table}>
             <thead>
               <tr>
-                <th>
+                <th style={{ width: "30%" }}>
                   Activity
                   <FaTasks className={classes.icon} />
                 </th>
                 <th>
                   Important Information
                   <FaInfoCircle className={classes.icon} />
-                </th>
-                <th>
-                  Other Information
-                  <FaClipboardList className={classes.icon} />
                 </th>
                 <th className={classes.deleteTableHeader}>Delete activity</th>
               </tr>
@@ -92,6 +87,7 @@ export const TripDayTable = ({
                     onActivityChange(index, field, value)
                   }
                   onRemove={() => onRemoveActivity(index)}
+                  disableDeleteButton={activities.length === 1}
                 />
               ))}
             </tbody>

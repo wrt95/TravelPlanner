@@ -11,7 +11,6 @@ import { TripPlanner } from "./components/TripPlanner";
 		- Make it possible to edit destination
 		- Add start date to "create trip"
 		    - Show and calculate the date next to the day: "Day 1 - 01.08.2024" 
-		- Remove photo column. 
 		- Add button to "append files to your PDF and download"
 		- BUG - clicking "Add Another Activity" copies the value of the first row.
 		- BUG - clicking "Add Another Day" copies the value of the previous day.  
@@ -21,7 +20,7 @@ import { TripPlanner } from "./components/TripPlanner";
 		    - Days - max 30
 			- Activities pr. day - 10.
 		- Add button to close all days.
-		- Make it possible to have several trips
+		- Make it possible to have several trips??
 			- Create a dashboard - list of my trips and a button to create new trip
 			- Managed by routing
 		- Fix the PDF

@@ -1,5 +1,5 @@
 import { ReactElement, ChangeEvent } from "react";
-// import classes from "./ActivityRow.module.css";
+import classes from "./ActivityRow.module.css";
 import { TripActivity, TripActivityTextField } from "../../../types/Trip";
 import { Button } from "../../Button";
 import { TextArea } from "../../TextArea";
@@ -10,22 +10,23 @@ type ActivityRowProps = {
   activity: TripActivity;
   onChange: (field: TripActivityTextField, value: string) => void;
   onRemove: () => void;
+  disableDeleteButton: boolean;
 };
 
 export const ActivityRow = ({
   activity,
   onChange,
   onRemove,
+  disableDeleteButton,
 }: ActivityRowProps): ReactElement => {
   const handleChangeActivity = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange("activity", e.target.value);
   };
+
   const handleChangeImportant = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange("importantInformation", e.target.value);
   };
-  const handleChangeOther = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    onChange("otherInformation", e.target.value);
-  };
+
   return (
     <tr>
       <td>
@@ -46,19 +47,13 @@ export const ActivityRow = ({
         />
       </td>
       <td>
-        <TextArea
-          value={activity.otherInformation ?? ""}
-          onChange={handleChangeOther}
-          label="Other Information"
-          hideLabel
-        />
-      </td>
-      <td>
         <Button
           onClick={onRemove}
           variant="danger"
           aria-label="Delete activity"
           icon={<FaTrash />}
+          disabled={disableDeleteButton}
+
           // TODO - ADD DISABLED
         />
       </td>

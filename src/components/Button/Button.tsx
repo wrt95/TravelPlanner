@@ -16,6 +16,7 @@ export const Button = ({
   variant = "default",
   icon,
   iconPlacement = "left",
+  disabled,
   className,
   ...rest
 }: ButtonProps): ReactElement => {
@@ -26,7 +27,13 @@ export const Button = ({
   );
   return (
     <button
-      className={cn(classes.button, classes[variant], className)}
+      className={cn(
+        classes.button,
+        classes[variant],
+        disabled ? classes.disabled : undefined,
+        className
+      )}
+      disabled={disabled}
       {...rest}
     >
       {icon && iconPlacement === "left" && IconComponent}

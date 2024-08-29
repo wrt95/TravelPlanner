@@ -12,5 +12,4 @@ export type SaveableTripDay = {
 export type SaveableTripActivity = {
   activity: string;
   importantInformation?: string;
-  otherInformation?: string;
 };

@@ -21,10 +21,13 @@
 	--background-color: #e0f7fa;*/
   --text-color: #2c2c2c;
 
-  --button-color: var(--primary-color);
-  --button-hover-color: var(--secondary-color);
-  --button-active-color: var(--tertiary-color);
+  --button-color: #00517e;
+  --button-hover-color: #1e98f5;
+  --button-active-color: #0a3251;
   /*--button-active-color: #01579b; /* Even darker shade for active */
+
+  --button-text-color-dark: #2c2c2c;
+  --button-text-color-light: #ffffff;
 
   --button-color-danger: var(--primary-color-danger);
   --button-hover-color-danger: var(--secondary-color-danger);

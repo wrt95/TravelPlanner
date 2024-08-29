@@ -1,8 +1,6 @@
 export type TripActivity = {
   activity: string;
   importantInformation?: string;
-  otherInformation?: string;
-  // image?: File | null;
 };
 
 export type TripDay = {
@@ -17,7 +15,4 @@ export type Trip = {
   // TODO price
 };
 
-export type TripActivityTextField =
-  | "activity"
-  | "importantInformation"
-  | "otherInformation";
+export type TripActivityTextField = "activity" | "importantInformation";

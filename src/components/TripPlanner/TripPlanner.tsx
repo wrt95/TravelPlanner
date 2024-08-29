@@ -31,14 +31,7 @@ export const TripPlanner = (): ReactElement => {
   // TODO - split into smaller chunks
   return (
     <div className={classes.pageWrapper}>
-      <div
-        className={
-          //tripData.days.length > 0
-          //? classes.stickyHeader
-          //  :
-          classes.nonStickyHeader
-        }
-      >
+      <div className={classes.header}>
         <div className={classes.headerWrapper}>
           <GiPalmTree className={classes.headerIcon} />
           <h1 className={classes.pageHeader}>Travel Planner</h1>
