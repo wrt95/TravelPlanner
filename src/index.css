@@ -51,6 +51,9 @@
 
   --input-padding: 10px;
   --input-border-radius: 5px;
+
+  --focus-outline: 2px solid #0a3251;
+  --focus-outline-offset: 4px;
 }
 
 html,
