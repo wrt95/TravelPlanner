@@ -1,21 +1,18 @@
-import { useEffect } from 'react';
-import { Trip } from '../types/Trip';
-import { SaveableTrip } from '../types/SaveabletTrip';
-import { mapSaveableTripToTrip } from '../utils/localStorageUtils';
+import { useEffect } from "react";
+import { Trip } from "../types/Trip";
 
 export const useLocalStorageLoadTrip = (
-	key: string,
-	setTripData: (value: Trip) => void
+  key: string,
+  setTripData: (value: Trip) => void
 ) => {
-	useEffect(() => {
-		const loadData = () => {
-			const savedData = localStorage.getItem(key);
-			if (savedData) {
-				const saveableTripParsed = JSON.parse(savedData) as SaveableTrip;
-				const tripData: Trip = mapSaveableTripToTrip(saveableTripParsed);
-				setTripData(tripData);
-			}
-		};
-		loadData();
-	}, [key, setTripData]);
+  useEffect(() => {
+    const loadData = () => {
+      const savedData = localStorage.getItem(key);
+      if (savedData) {
+        const tripData = JSON.parse(savedData) as Trip;
+        setTripData(tripData);
+      }
+    };
+    loadData();
+  }, [key, setTripData]);
 };

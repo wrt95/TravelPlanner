@@ -4,9 +4,6 @@ import { TripPlanner } from "./components/TripPlanner";
 /*
 	TODO LIST
 		- context for each table activity
-		- Update colours for background and the "cards"
-		- Update keyboard accessible color for the buttons
-		- Update keyboard accessible color for the textfields
 		- Maybe move "download", "reset", and a "collapse all" button be on right side of the page
 		- Make it possible to edit destination
 		- Add start date to "create trip"

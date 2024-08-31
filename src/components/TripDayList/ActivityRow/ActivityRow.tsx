@@ -1,16 +1,16 @@
 import { ReactElement, ChangeEvent } from "react";
-import classes from "./ActivityRow.module.css";
 import { TripActivity, TripActivityTextField } from "../../../types/Trip";
 import { Button } from "../../Button";
 import { TextArea } from "../../TextArea";
 import { FaTrash } from "react-icons/fa";
-// import { useTripContext } from "../../../contexts/TripContext";
 
 type ActivityRowProps = {
   activity: TripActivity;
   onChange: (field: TripActivityTextField, value: string) => void;
   onRemove: () => void;
   disableDeleteButton: boolean;
+  activityIndex: number;
+  dayIndex: number;
 };
 
 export const ActivityRow = ({
@@ -18,6 +18,8 @@ export const ActivityRow = ({
   onChange,
   onRemove,
   disableDeleteButton,
+  activityIndex,
+  dayIndex,
 }: ActivityRowProps): ReactElement => {
   const handleChangeActivity = (e: ChangeEvent<HTMLTextAreaElement>) => {
     onChange("activity", e.target.value);
@@ -36,6 +38,7 @@ export const ActivityRow = ({
           required
           label="Activity"
           hideLabel
+          id={`Activity index: ${activityIndex} for day index ${dayIndex}`}
         />
       </td>
       <td>
@@ -44,6 +47,7 @@ export const ActivityRow = ({
           onChange={handleChangeImportant}
           label="Important Information"
           hideLabel
+          id={`Information index: ${activityIndex} for day index ${dayIndex}`}
         />
       </td>
       <td>
@@ -53,8 +57,6 @@ export const ActivityRow = ({
           aria-label="Delete activity"
           icon={<FaTrash />}
           disabled={disableDeleteButton}
-
-          // TODO - ADD DISABLED
         />
       </td>
     </tr>

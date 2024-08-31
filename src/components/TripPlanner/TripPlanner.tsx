@@ -23,6 +23,7 @@ export const TripPlanner = (): ReactElement => {
     const verificationText: string =
       "Are you sure you want to delete your trip? This cannot be reverted.";
     if (window.confirm(verificationText)) {
+      console.log("delete OK");
       setTripData(initialTrip);
       localStorage.removeItem(TRIP_DATA_LOCAL_STORAGE_KEY);
     }

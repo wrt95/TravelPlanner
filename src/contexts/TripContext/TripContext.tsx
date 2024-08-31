@@ -1,8 +1,6 @@
 import React, { createContext, useContext, useState } from "react";
 import { Trip } from "../../types/Trip";
 import { TRIP_DATA_LOCAL_STORAGE_KEY } from "../../constants/localStorageConstants";
-import { SaveableTrip } from "../../types/SaveabletTrip";
-import { mapSaveableTripToTrip } from "../../utils/localStorageUtils";
 
 export type TripContextProps = {
   tripData: Trip;
@@ -53,7 +51,6 @@ const getTripData = (savedTripData: string | null): Trip => {
   if (savedTripData === null) {
     return initialTrip;
   }
-  const saveableTripParsed = JSON.parse(savedTripData) as SaveableTrip;
-  const trip: Trip = mapSaveableTripToTrip(saveableTripParsed);
+  const trip = JSON.parse(savedTripData) as Trip;
   return trip;
 };

@@ -1,9 +1,11 @@
 export type TripActivity = {
+  // id: number;
   activity: string;
   importantInformation?: string;
 };
 
 export type TripDay = {
+  //id: number;
   day: number;
   activities: TripActivity[];
   isAccordionOpen: boolean;

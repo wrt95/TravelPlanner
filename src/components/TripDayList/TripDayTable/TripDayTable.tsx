@@ -40,16 +40,16 @@ export const TripDayTable = ({
 }: TripDayTableProps): ReactElement => {
   const lastIndex = activities.length - 1;
   const lastElementActivity = activities[lastIndex].activity;
-  const isLastElementAcitivityEmpty = lastElementActivity === "";
+  const isLastElementActivityEmpty = lastElementActivity === "";
 
-  const handleClickButton = () => {
+  const toggleAccordion = () => {
     setAccordionOpen(!isAccordionOpen);
   };
 
   return (
     <div className={classes.wrapper}>
       <button
-        onClick={handleClickButton}
+        onClick={toggleAccordion}
         className={cn(
           classes.tripDayButton,
           isAccordionOpen && classes.tripDayButtonOpen
@@ -88,6 +88,8 @@ export const TripDayTable = ({
                   }
                   onRemove={() => onRemoveActivity(index)}
                   disableDeleteButton={activities.length === 1}
+                  activityIndex={index}
+                  dayIndex={day}
                 />
               ))}
             </tbody>
@@ -95,13 +97,13 @@ export const TripDayTable = ({
           <div className={classes.dayActions}>
             <Button
               onClick={onAddActivity}
-              disabled={isLastElementAcitivityEmpty}
+              disabled={isLastElementActivityEmpty} // Fix so it is not disabled when start typing
               icon={<FaPlus />}
               className={
-                isLastElementAcitivityEmpty ? classes.disabled : undefined
+                isLastElementActivityEmpty ? classes.disabled : undefined
               }
               title={
-                isLastElementAcitivityEmpty
+                isLastElementActivityEmpty
                   ? "Add some text to the acitivy on the final row to be able to add more activities"
                   : "Add another activity"
               }

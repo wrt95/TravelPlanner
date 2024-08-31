@@ -1,4 +1,4 @@
-import { ChangeEvent, ReactElement, useId } from "react";
+import { ChangeEvent, HTMLAttributes, ReactElement } from "react";
 import classes from "./TextArea.module.css";
 
 type TextAreaProps = {
@@ -7,7 +7,7 @@ type TextAreaProps = {
   required?: boolean;
   label: string;
   hideLabel?: boolean;
-};
+} & HTMLAttributes<HTMLTextAreaElement>;
 
 export const TextArea = ({
   value,
@@ -15,8 +15,9 @@ export const TextArea = ({
   required,
   label,
   hideLabel,
+  id,
+  ...rest
 }: TextAreaProps): ReactElement => {
-  const id = useId();
   return (
     <div>
       <label
@@ -30,8 +31,9 @@ export const TextArea = ({
         id={id}
         onChange={onChange}
         required={required}
-        rows={1}
+        rows={1} // TODO
         className={classes.styledInput}
+        {...rest}
       />
     </div>
   );
