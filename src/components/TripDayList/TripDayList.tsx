@@ -3,7 +3,6 @@ import classes from "./TripDayList.module.css";
 import { TripActivityTextField, TripDay } from "../../types/Trip";
 import { TripDayTable } from "./TripDayTable";
 import { Button } from "../Button";
-import { emptyTripActivity } from "../../utils/emptyTripActivity";
 import { useTripContext } from "../../contexts/TripContext";
 import { FaPlus } from "react-icons/fa";
 
@@ -12,7 +11,10 @@ export const TripDayList = (): ReactElement => {
 
   const handleAddRow = (dayIndex: number) => {
     const newTripDays: TripDay[] = [...tripData.days];
-    newTripDays[dayIndex].activities.push({ ...emptyTripActivity });
+    newTripDays[dayIndex].activities.push({
+      activity: "",
+      importantInformation: "",
+    });
     setTripData({ ...tripData, days: newTripDays });
   };
 

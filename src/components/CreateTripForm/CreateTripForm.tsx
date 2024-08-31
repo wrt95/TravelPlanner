@@ -4,12 +4,12 @@ import { Textfield } from "../Textfield";
 import { Button } from "../Button";
 import { useTripContext } from "../../contexts/TripContext";
 import { Trip, TripDay } from "../../types/Trip";
-import { emptyTripActivity } from "../../utils/emptyTripActivity";
 import { FaPlus } from "react-icons/fa";
 
 type CreateTripFormData = {
   destination: string;
   days: number;
+  startDate: Date;
 };
 
 export const CreateTripForm = (): ReactElement => {
@@ -22,17 +22,19 @@ export const CreateTripForm = (): ReactElement => {
     const createTripForm: CreateTripFormData = {
       destination: formData.get("destination") as string,
       days: Number(formData.get("days") as string),
+      startDate: new Date(formData.get("days") as string),
     };
-    const { destination, days } = createTripForm;
+    const { destination, days, startDate } = createTripForm;
 
     const newTripData: TripDay[] = Array.from({ length: days }, (_, i) => ({
       day: i + 1,
-      activities: [{ ...emptyTripActivity }],
+      activities: [{ activity: "", importantInformation: "" }],
       isAccordionOpen: true,
     }));
     const newTrip: Trip = {
       destination,
       days: newTripData,
+      startDate,
     };
     setTripData(newTrip);
   };
@@ -61,6 +63,13 @@ export const CreateTripForm = (): ReactElement => {
           label="Number of days of your trip"
           min={1}
           id="Number of days"
+        />
+        <Textfield
+          type="date"
+          name="startDate"
+          required
+          label="Start date of trip"
+          id="StartDate"
         />
         <Button className={classes.button} type="submit" icon={<FaPlus />}>
           Create Plan
