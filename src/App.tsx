@@ -5,12 +5,8 @@ import { TripPlanner } from "./components/TripPlanner";
 	TODO LIST
 		- context for each table activity
 		- Maybe move "download", "reset", and a "collapse all" button be on right side of the page
-		- Make it possible to edit destination
-		- Add start date to "create trip"
-		    - Show and calculate the date next to the day: "Day 1 - 01.08.2024" 
+		- Make it possible to edit destination and start date
 		- Add button to "append files to your PDF and download"
-		- BUG - clicking "Add Another Activity" copies the value of the first row.
-		- BUG - clicking "Add Another Day" copies the value of the previous day.  
 		- Make it responsive
 		- Make Textarea the lineheight of the number of lines in the box
 		- Max max length of activities pr. day and max length of days. 

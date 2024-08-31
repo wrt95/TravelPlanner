@@ -12,6 +12,7 @@ import {
   FaTrash,
 } from "react-icons/fa";
 import cn from "classnames";
+import { useTripContext } from "../../../contexts/TripContext";
 
 type TripDayTableProps = {
   day: number;
@@ -38,12 +39,20 @@ export const TripDayTable = ({
   isAccordionOpen,
   setAccordionOpen,
 }: TripDayTableProps): ReactElement => {
+  const { tripData } = useTripContext();
+
   const lastIndex = activities.length - 1;
   const lastElementActivity = activities[lastIndex].activity;
   const isLastElementActivityEmpty = lastElementActivity === "";
 
   const toggleAccordion = () => {
     setAccordionOpen(!isAccordionOpen);
+  };
+
+  const calculateDate = (): string => {
+    const date = new Date(tripData.startDate);
+    date.setDate(date.getDate() + day - 1);
+    return date.toLocaleDateString();
   };
 
   return (
@@ -55,7 +64,9 @@ export const TripDayTable = ({
           isAccordionOpen && classes.tripDayButtonOpen
         )}
       >
-        <h3 className={classes.tripHeader}>Day {day}</h3>
+        <h3 className={classes.tripHeader}>
+          Day {day} - {calculateDate()}
+        </h3>
         {isAccordionOpen ? (
           <FaArrowUp className={classes.accordionIcon} />
         ) : (

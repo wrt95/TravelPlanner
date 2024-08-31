@@ -29,6 +29,20 @@ export const TripPlanner = (): ReactElement => {
     }
   };
 
+  const calculateDaysToDate = (): number => {
+    console.log("date", tripData.startDate);
+    const currentDate = new Date();
+    const startDate = new Date(tripData.startDate);
+    const differenceInTime = startDate.getTime() - currentDate.getTime();
+
+    // Convert the time difference from milliseconds to days
+    const differenceInDays = Math.ceil(
+      differenceInTime / (1000 * 60 * 60 * 24)
+    );
+
+    return differenceInDays;
+  };
+
   // TODO - split into smaller chunks
   return (
     <div className={classes.pageWrapper}>
@@ -48,8 +62,9 @@ export const TripPlanner = (): ReactElement => {
           <>
             <div className={classes.subHeader}>
               <p className={classes.tripLength}>
-                Your trip to "{tripData.destination}" will be{" "}
-                {tripData.days.length} day
+                Your trip to "{tripData.destination}" is in{" "}
+                {calculateDaysToDate()} days and will be {tripData.days.length}{" "}
+                day
                 {tripData.days.length === 1 ? "" : "s"} long
               </p>
               <GiCommercialAirplane className={classes.subHeaderIcon} />
