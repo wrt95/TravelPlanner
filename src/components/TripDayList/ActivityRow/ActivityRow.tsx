@@ -43,7 +43,7 @@ export const ActivityRow = ({
       </td>
       <td>
         <TextArea
-          value={activity.importantInformation ?? ""}
+          value={activity.importantInformation}
           onChange={handleChangeImportant}
           label="Important Information"
           hideLabel

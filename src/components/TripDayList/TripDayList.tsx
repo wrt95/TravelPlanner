@@ -56,10 +56,16 @@ export const TripDayList = (): ReactElement => {
     }
   };
 
+  // TODO - FIX SO THAT NEW ELEMENT IS NOT SAME AS OLD
   const handleAddDay = () => {
     const newTripDay: TripDay = {
       day: tripData.days.length + 1,
-      activities: [emptyTripActivity],
+      activities: [
+        {
+          activity: "",
+          importantInformation: "",
+        },
+      ],
       isAccordionOpen: true,
     };
     const updatedTripDays: TripDay[] = [...tripData.days, newTripDay];
