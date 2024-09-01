@@ -76,9 +76,10 @@ export const TripPlanner = (): ReactElement => {
             <div className={classes.subHeader}>
               <p className={classes.tripLength}>
                 Your trip to "{tripData.destination}" is in{" "}
-                {calculateDaysToDate()} days and will be {tripData.days.length}{" "}
-                day
-                {tripData.days.length === 1 ? "" : "s"} long
+                {calculateDaysToDate()} day
+                {calculateDaysToDate() === 1 ? "" : "s"} and will be{" "}
+                {tripData.days.length} day
+                {tripData.days.length === 1 ? "" : "s"}
                 <GiCommercialAirplane className={classes.subHeaderIcon} />
                 <GiSuitcase className={classes.subHeaderIcon} />
               </p>
