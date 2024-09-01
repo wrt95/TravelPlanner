@@ -11,7 +11,7 @@ export type TripDay = {
 
 export type Trip = {
   destination: string;
-  startDate: Date;
+  startDate: string;
   days: TripDay[];
   // TODO price
 };

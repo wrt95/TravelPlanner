@@ -10,7 +10,7 @@ export type TripContextProps = {
 export const initialTrip: Trip = {
   destination: "",
   days: [],
-  startDate: new Date(),
+  startDate: "",
 };
 
 const initialTripContext: TripContextProps = {

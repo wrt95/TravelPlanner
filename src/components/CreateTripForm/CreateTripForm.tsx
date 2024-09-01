@@ -9,7 +9,7 @@ import { FaPlus } from "react-icons/fa";
 type CreateTripFormData = {
   destination: string;
   days: number;
-  startDate: Date;
+  startDate: string;
 };
 
 export const CreateTripForm = (): ReactElement => {
@@ -22,7 +22,7 @@ export const CreateTripForm = (): ReactElement => {
     const createTripForm: CreateTripFormData = {
       destination: formData.get("destination") as string,
       days: Number(formData.get("days") as string),
-      startDate: new Date(formData.get("startDate") as string),
+      startDate: formData.get("startDate") as string,
     };
     const { destination, days, startDate } = createTripForm;
 

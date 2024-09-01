@@ -5,7 +5,6 @@ import { TripPlanner } from "./components/TripPlanner";
 	TODO LIST
 		- context for each table activity
 		- Maybe move "download", "reset", and a "collapse all" button be on right side of the page
-		- Make it possible to edit destination and start date
 		- Add button to "append files to your PDF and download"
 		- Make it responsive
 		- Make Textarea the lineheight of the number of lines in the box

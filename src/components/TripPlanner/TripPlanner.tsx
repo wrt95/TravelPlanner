@@ -11,13 +11,16 @@ import { useLocalStorageSaveTrip } from "../../hooks/useLocalStorageSaveTrip";
 import { TRIP_DATA_LOCAL_STORAGE_KEY } from "../../constants/localStorageConstants";
 import { GiPalmTree, GiCommercialAirplane, GiSuitcase } from "react-icons/gi";
 import cn from "classnames";
-import { FaTrash } from "react-icons/fa";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { EditTripDetails } from "../EditTripDetails";
 
 export const TripPlanner = (): ReactElement => {
   const { tripData, setTripData } = useTripContext();
 
   useLocalStorageLoadTrip(TRIP_DATA_LOCAL_STORAGE_KEY, setTripData);
   useLocalStorageSaveTrip(TRIP_DATA_LOCAL_STORAGE_KEY, tripData);
+
+  const [editMode, setEditoMode] = useState<boolean>(false);
 
   const resetData = () => {
     const verificationText: string =
@@ -29,6 +32,11 @@ export const TripPlanner = (): ReactElement => {
     }
   };
 
+  const handleClickEdit = () => {
+    setEditoMode(true);
+  };
+
+  // TODO UTILS
   const calculateDaysToDate = (): number => {
     console.log("date", tripData.startDate);
     const currentDate = new Date();
@@ -58,6 +66,8 @@ export const TripPlanner = (): ReactElement => {
           <div className={classes.formWrapper}>
             <CreateTripForm />
           </div>
+        ) : editMode ? (
+          <EditTripDetails onSave={() => setEditoMode(false)} />
         ) : (
           <>
             <div className={classes.subHeader}>
@@ -72,6 +82,9 @@ export const TripPlanner = (): ReactElement => {
             </div>
             <div className={classes.actionButtons}>
               <ExportPDF />
+              <Button onClick={handleClickEdit} icon={<FaEdit />}>
+                Edit destination and start date
+              </Button>
               <Button onClick={resetData} variant="danger" icon={<FaTrash />}>
                 Reset form
               </Button>

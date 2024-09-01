@@ -1,0 +1,1 @@
+export { EditTripDetails } from "./EditTripDetails";
