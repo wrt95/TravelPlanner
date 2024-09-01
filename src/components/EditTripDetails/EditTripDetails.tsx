@@ -1,10 +1,13 @@
 import { ChangeEvent, ReactElement, useState } from "react";
 import classes from "./EditTripDetails.module.css";
+import cn from "classnames";
 import { useTripContext } from "../../contexts/TripContext";
 import { Textfield } from "../Textfield";
 import { Button } from "../Button";
 import { FaSave } from "react-icons/fa";
 import { Trip } from "../../types/Trip";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { MEDIA_QUERY_MAX_WIDTH } from "../../constants/mediaQueryConstants";
 
 type EditTripDetailsProps = {
   onSave: () => void;
@@ -14,6 +17,7 @@ export const EditTripDetails = ({
   onSave,
 }: EditTripDetailsProps): ReactElement => {
   const { tripData, setTripData } = useTripContext();
+  const isSmallScreen = useMediaQuery(MEDIA_QUERY_MAX_WIDTH);
 
   const [destination, setDestination] = useState(tripData.destination);
   const [startDate, setStartDate] = useState(tripData.startDate);
@@ -37,8 +41,18 @@ export const EditTripDetails = ({
   };
 
   return (
-    <div className={classes.wrapper}>
-      <div className={classes.inputWrapper}>
+    <div
+      className={cn(
+        classes.wrapper,
+        isSmallScreen ? classes.wrapperSmall : classes.wrapperLarge
+      )}
+    >
+      <div
+        className={cn(
+          classes.inputWrapper,
+          isSmallScreen ? classes.inputWrapperSmall : classes.inputWrapperLarge
+        )}
+      >
         <Textfield
           type="text"
           name="destination"
