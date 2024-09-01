@@ -1,80 +1,8 @@
-/*
-.tripHeader {
-	font-size: 24px;
-	font-weight: bold;
-	text-align: center;
-	margin: 0;
-}
-
-.tripDay {
-	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	border: 2px solid #f4c952;
-	margin: 2rem 0;
-	padding: 1rem;
-	border-radius: 5px;
-	background-color: #f5e4b3;
-}
-
-.dayActions {
-	display: flex;
-	gap: 2rem;
-	margin-top: 10px;
-}
-
-.table {
-	--last-column-width: 50px;
-
-	width: 100%;
-	border-collapse: collapse;
-	table-layout: fixed;
-}
-
-.table th,
-.table td {
-	padding: 8px;
-	border-bottom: 2px solid #f4c952;
-}
-
-.table td th {
-	--number-of-columns-with-value: 4;
-
-	width: calc(
-		(100% - var(--last-column-width)) / var(--number-of-columns-with-value)
-	); /* Adjust based on the number of columns minus button width */
-/*}
-
-.table td:last-child,
-.table th:last-child {
-	width: var(--last-column-width);
-	text-align: center;
-}
-
-.deleteTableHeader {
-	visibility: hidden;
-}
-
-th {
-	font-size: 20px;
-}
-
-.icon {
-	margin-left: 1rem;
-	font-size: 20px;
-}
-
-.disabled {
-	opacity: 70%;
-}
-*/
-
 .wrapper {
   width: 100%;
-  border-top: 2px solid #00517e;
-  border-bottom: 2px solid #00517e; /* TODO BORDER COLOR*/
-  background-color: #e5f6ff;
+  border-top: var(--border);
+  border-bottom: var(--border);
+  background-color: var(--accordion-background-color);
 }
 
 .tripDayButton {
@@ -131,7 +59,7 @@ th {
 
   width: calc(
     (100% - var(--last-column-width)) / var(--number-of-columns-with-value)
-  ); /* Adjust based on the number of columns minus button width */
+  );
 }
 
 .table td:last-child,
@@ -144,14 +72,14 @@ th {
 }
 
 th {
-  font-size: 20px;
+  font-size: var(--text-font-size);
 }
 
 .icon {
   margin-left: 1rem;
-  font-size: 20px;
+  font-size: var(--text-font-size);
 }
 
 .disabled {
-  opacity: 70%;
+  opacity: var(--disabled-opacity);
 }

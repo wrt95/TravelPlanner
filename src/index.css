@@ -1,11 +1,4 @@
 :root {
-  /*
-  old colors
-  --primary-color: #ffb74d;
-  --secondary-color: #ffcc80;
-  --tertiary-color: #f58a07;
-  --background-color: #faf3e0;
-  */
   --primary-color: #bfe8ff;
   --secondary-color: #ffcc80;
   --tertiary-color: #f58a07;
@@ -15,16 +8,11 @@
   --secondary-color-danger: #b3253a;
   --tertiary-color-danger: #861c2c;
 
-  /* --primary-color: #0277bd;
-	--secondary-color: #ffc107; 
-	--accent-color: #ff5722;
-	--background-color: #e0f7fa;*/
   --text-color: #2c2c2c;
 
   --button-color: #00517e;
   --button-hover-color: #1e98f5;
   --button-active-color: #0a3251;
-  /*--button-active-color: #01579b; /* Even darker shade for active */
 
   --button-text-color-dark: #2c2c2c;
   --button-text-color-light: #ffffff;
@@ -34,6 +22,10 @@
   --button-active-color-danger: var(--tertiary-color-danger);
 
   --accordion-color-open: #bfe8ff;
+  --accordion-background-color: #e5f6ff;
+
+  --border-color: #00517e;
+  --border: 2px solid var(--border-color);
 
   /* --success-color: #388e3c; 
 	--warning-color: #fbc02d;*/
@@ -54,6 +46,14 @@
 
   --focus-outline: 2px solid #0a3251;
   --focus-outline-offset: 4px;
+
+  --disabled-opacity: 70%;
+}
+
+@media (max-width: 950px) {
+  :root {
+    --text-font-size: 18px;
+  }
 }
 
 html,
@@ -88,8 +88,4 @@ p {
 label {
   font-size: var(--text-font-size);
   font-weight: bold;
-}
-
-button {
-  font-size: 18px;
 }

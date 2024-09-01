@@ -44,5 +44,5 @@
 }
 
 .disabled {
-  opacity: 70%;
+  opacity: var(--disabled-opacity);
 }
