@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/TravelPlanner/static/css/main.ffa1064f.css",
+    "main.js": "/TravelPlanner/static/js/main.320a0e16.js",
+    "static/js/453.4a73b002.chunk.js": "/TravelPlanner/static/js/453.4a73b002.chunk.js",
+    "index.html": "/TravelPlanner/index.html",
+    "main.ffa1064f.css.map": "/TravelPlanner/static/css/main.ffa1064f.css.map",
+    "main.320a0e16.js.map": "/TravelPlanner/static/js/main.320a0e16.js.map",
+    "453.4a73b002.chunk.js.map": "/TravelPlanner/static/js/453.4a73b002.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ffa1064f.css",
+    "static/js/main.320a0e16.js"
+  ]
+}
