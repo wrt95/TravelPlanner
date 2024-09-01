@@ -40,7 +40,6 @@ const styles = StyleSheet.create({
   downloadButton: {
     width: "100%",
     textAlign: "center",
-    marginTop: 20,
   },
   downloadLink: {
     textDecoration: "none",
@@ -74,11 +73,13 @@ export const ExportPDF = (): ReactElement => {
     >
       {({ blob, url, loading, error }) =>
         loading ? (
-          <View>Loading...</View>
-        ) : (
-          <View style={styles.downloadButton}>
+          <div style={styles.downloadButton}>
             <Button icon={<FaDownload />}>Download PDF</Button>
-          </View>
+          </div>
+        ) : (
+          <div style={styles.downloadButton}>
+            <Button icon={<FaDownload />}>Download PDF</Button>
+          </div>
         )
       }
     </PDFDownloadLink>
