@@ -34,7 +34,7 @@
 }
 
 .accordionIcon {
-  font-size: var(--sub-header-icon);
+  font-size: var(--font-size-sub-header-icon);
 }
 
 .tripDay {

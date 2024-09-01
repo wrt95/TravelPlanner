@@ -14,30 +14,49 @@ import { FaDownload } from "react-icons/fa";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { MEDIA_QUERY_MAX_WIDTH } from "../../constants/mediaQueryConstants";
 
+const MARGIN_BOTTOM_SEPERATOR = 10;
+const MARGIN_VERTICAL_DIVIDER = 30;
+
+const FONT_SIZE_TEXT = 18;
+
 const styles = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
-    padding: 20,
+    paddingHorizontal: 50,
+    paddingVertical: 40,
   },
-  header: {
-    fontSize: 24,
-    marginBottom: 20,
+  titlePage: {
     textAlign: "center",
+    marginBottom: MARGIN_BOTTOM_SEPERATOR,
+  },
+  destinationTitle: {
+    fontSize: 32,
+    marginBottom: 30,
+  },
+  tripInfo: {
+    fontSize: FONT_SIZE_TEXT,
+    marginBottom: MARGIN_BOTTOM_SEPERATOR,
   },
   dayHeader: {
-    fontSize: 18,
-    marginTop: 20,
-    marginBottom: 10,
+    fontSize: 22,
+    marginBottom: MARGIN_BOTTOM_SEPERATOR,
   },
   activityContainer: {
-    marginBottom: 20,
-  },
-  activityHeader: {
-    fontSize: 16,
-    marginBottom: 10,
+    gap: MARGIN_BOTTOM_SEPERATOR,
   },
   activityText: {
     marginBottom: 5,
+    fontSize: FONT_SIZE_TEXT,
+  },
+  noActivityText: {
+    fontStyle: "italic",
+    fontSize: FONT_SIZE_TEXT,
+  },
+  divider: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#000",
+    marginVertical: MARGIN_VERTICAL_DIVIDER,
+    marginHorizontal: 0,
   },
   downloadButton: {
     width: "100%",
@@ -53,24 +72,70 @@ export const ExportPDF = (): ReactElement => {
 
   const shouldHideButtonText = useMediaQuery(MEDIA_QUERY_MAX_WIDTH);
 
+  // Function to format the date as dd.mm.yyyy
+  const formatDate = (dateStr: string, daysToAdd: number = 0): string => {
+    const date = new Date(dateStr);
+    date.setDate(date.getDate() + daysToAdd);
+    return date.toLocaleDateString("en-GB");
+  };
+
   return (
     <PDFDownloadLink
       style={styles.downloadLink}
       document={
         <Document>
-          {tripData.days.map((tripDay: TripDay, index: number) => (
-            <Page key={index} style={styles.page}>
-              <Text style={styles.header}>Day {tripDay.day}</Text>
-              {tripDay.activities.map((activity, activityIndex) => (
-                <View key={activityIndex} style={styles.activityContainer}>
-                  <Text style={styles.activityHeader}>{activity.activity}</Text>
-                  <Text style={styles.activityText}>
-                    {activity.importantInformation}
+          <Page style={styles.page}>
+            {/* Title Page Content */}
+            <View style={styles.titlePage}>
+              <Text style={styles.destinationTitle}>
+                {tripData.destination}
+              </Text>
+              <Text style={styles.tripInfo}>
+                {formatDate(tripData.startDate)} -{" "}
+                {formatDate(tripData.startDate, tripData.days.length - 1)}
+              </Text>
+              <Text style={styles.tripInfo}>
+                {tripData.days.length}{" "}
+                {tripData.days.length > 1 ? "days" : "day"}
+              </Text>
+            </View>
+
+            {/* Divider before the first day */}
+            <View style={styles.divider} />
+
+            {/* Days Content */}
+            {tripData.days.map((tripDay: TripDay, index: number) => (
+              <View key={index} wrap={false}>
+                <View style={styles.activityContainer}>
+                  <Text style={styles.dayHeader}>
+                    Day {tripDay.day} -{" "}
+                    {formatDate(tripData.startDate, tripDay.day - 1)}
                   </Text>
+                  {tripDay.activities.length > 0 &&
+                  tripDay.activities[0].activity ? (
+                    tripDay.activities.map((activity, activityIndex) => (
+                      <View key={activityIndex}>
+                        <Text style={styles.activityText}>
+                          Activity - {activity.activity}
+                        </Text>
+                        <Text style={styles.activityText}>
+                          Information -{" "}
+                          {activity.importantInformation ||
+                            "No additional information"}
+                        </Text>
+                      </View>
+                    ))
+                  ) : (
+                    <Text style={styles.noActivityText}>
+                      No activities added for this day
+                    </Text>
+                  )}
                 </View>
-              ))}
-            </Page>
-          ))}
+                {/* Divider after each day */}
+                <View style={styles.divider} />
+              </View>
+            ))}
+          </Page>
         </Document>
       }
       fileName="trip_report.pdf"

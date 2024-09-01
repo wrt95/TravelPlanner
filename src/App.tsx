@@ -11,11 +11,6 @@ import { TripPlanner } from "./components/TripPlanner";
 		    - Days - max 30
 			- Activities pr. day - 10.
 		- Add button to close all days.
-		- Fix the PDF
-			- plit the activities more, add sub headers
-			- Fix layout and how things are set up
-			- Add icons
-			- Only show
 */
 
 export const App = () => {
