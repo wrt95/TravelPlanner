@@ -11,6 +11,8 @@ import {
 import { Button } from "../Button";
 import { useTripContext } from "../../contexts/TripContext";
 import { FaDownload } from "react-icons/fa";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { MEDIA_QUERY_MAX_WIDTH } from "../../constants/mediaQueryConstants";
 
 const styles = StyleSheet.create({
   page: {
@@ -49,6 +51,8 @@ const styles = StyleSheet.create({
 export const ExportPDF = (): ReactElement => {
   const { tripData } = useTripContext();
 
+  const shouldHideButtonText = useMediaQuery(MEDIA_QUERY_MAX_WIDTH);
+
   return (
     <PDFDownloadLink
       style={styles.downloadLink}
@@ -74,11 +78,15 @@ export const ExportPDF = (): ReactElement => {
       {({ blob, url, loading, error }) =>
         loading ? (
           <div style={styles.downloadButton}>
-            <Button icon={<FaDownload />}>Download PDF</Button>
+            <Button icon={<FaDownload />} aria-label="Download PDF">
+              {shouldHideButtonText ? "" : "Download PDF"}
+            </Button>
           </div>
         ) : (
           <div style={styles.downloadButton}>
-            <Button icon={<FaDownload />}>Download PDF</Button>
+            <Button icon={<FaDownload />} aria-label="Download PDF">
+              {shouldHideButtonText ? "" : "Download PDF"}
+            </Button>
           </div>
         )
       }

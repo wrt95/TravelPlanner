@@ -40,6 +40,9 @@
   --main-heading-font: "Montserrat", sans-serif;
   --body-font: "Roboto", sans-serif;
   --text-font-size: 20px;
+  --font-size-sub-header-icon: 25px;
+  --font-size-header: 50px;
+  --font-size-header-icon: 100px;
 
   --input-padding: 10px;
   --input-border-radius: 5px;
@@ -48,11 +51,18 @@
   --focus-outline-offset: 4px;
 
   --disabled-opacity: 70%;
+
+  --page-padding-inline: 5rem;
 }
 
 @media (max-width: 950px) {
   :root {
     --text-font-size: 18px;
+    --font-size-sub-header-icon: 20px;
+    --font-size-header: 30px;
+    --font-size-header-icon: 50px;
+
+    --page-padding-inline: 1rem;
   }
 }
 

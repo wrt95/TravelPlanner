@@ -1,8 +1,20 @@
 .wrapper {
+  --accordion-button-padding-inline: 2rem;
+  --accordion-button-padding-block: 1rem;
+  --accordion-content-padding-bottom: 2rem;
+
   width: 100%;
   border-top: var(--border);
   border-bottom: var(--border);
   background-color: var(--accordion-background-color);
+}
+
+@media (max-width: 950px) {
+  .wrapper {
+    --accordion-button-padding-inline: 1rem;
+    --accordion-button-padding-block: 0;
+    --accordion-content-padding-bottom: 1rem;
+  }
 }
 
 .tripDayButton {
@@ -10,8 +22,8 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-block: 1rem;
-  padding-inline: 2rem;
+  padding-block: var(--accordion-button-padding-block);
+  padding-inline: var(--accordion-button-padding-inline);
   border: none;
   background-color: transparent;
   cursor: pointer;
@@ -22,7 +34,7 @@
 }
 
 .accordionIcon {
-  font-size: 25px;
+  font-size: var(--sub-header-icon);
 }
 
 .tripDay {
@@ -30,7 +42,7 @@
   flex-direction: column;
   align-items: center;
   padding-top: 0.5rem;
-  padding-bottom: 2rem;
+  padding-bottom: var(--accordion-content-padding-bottom);
   padding-inline: 1rem;
 }
 
@@ -55,7 +67,7 @@
 }
 
 .table td th {
-  --number-of-columns-with-value: 4;
+  --number-of-columns-with-value: 3;
 
   width: calc(
     (100% - var(--last-column-width)) / var(--number-of-columns-with-value)
@@ -73,6 +85,7 @@
 
 th {
   font-size: var(--text-font-size);
+  text-align: left;
 }
 
 .icon {

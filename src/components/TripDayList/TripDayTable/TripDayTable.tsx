@@ -13,6 +13,8 @@ import {
 } from "react-icons/fa";
 import cn from "classnames";
 import { useTripContext } from "../../../contexts/TripContext";
+import { useMediaQuery } from "../../../hooks/useMediaQuery";
+import { MEDIA_QUERY_MAX_WIDTH } from "../../../constants/mediaQueryConstants";
 
 type TripDayTableProps = {
   day: number;
@@ -40,6 +42,7 @@ export const TripDayTable = ({
   setAccordionOpen,
 }: TripDayTableProps): ReactElement => {
   const { tripData } = useTripContext();
+  const shouldHideButtonText = useMediaQuery(MEDIA_QUERY_MAX_WIDTH);
 
   const lastIndex = activities.length - 1;
   const lastElementActivity = activities[lastIndex].activity;
@@ -118,73 +121,21 @@ export const TripDayTable = ({
                   ? "Add some text to the acitivy on the final row to be able to add more activities"
                   : "Add another activity"
               }
+              aria-label="Add another activity"
             >
-              Add another activity
+              {shouldHideButtonText ? "" : "Add another activity"}
             </Button>
-            <Button onClick={onDeleteDay} variant="danger" icon={<FaTrash />}>
-              Delete day
+            <Button
+              onClick={onDeleteDay}
+              variant="danger"
+              icon={<FaTrash />}
+              aria-label="Delete day"
+            >
+              {shouldHideButtonText ? "" : "Delete day"}
             </Button>
           </div>
         </div>
       )}
     </div>
   );
-  /*return (
-		<div className={classes.tripDay}>
-			<h3 className={classes.tripHeader}>Day {day}</h3>
-			<table className={classes.table}>
-				<thead>
-					<tr>
-						<th>
-							Activity
-							<FaTasks className={classes.icon} />
-						</th>
-						<th>
-							Important Information
-							<FaInfoCircle className={classes.icon} />
-						</th>
-						<th>
-							Other Information
-							<FaClipboardList className={classes.icon} />
-						</th>
-						<th>
-							Image Upload
-							<FaImage className={classes.icon} />
-						</th>
-						<th className={classes.deleteTableHeader}>Delete activity</th>
-					</tr>
-				</thead>
-				<tbody>
-					{activities.map((activity, index) => (
-						<ActivityRow
-							key={index}
-							activity={activity}
-							onChange={(field, value) => onActivityChange(index, field, value)}
-							onImageUpload={(file) => onImageUpload(index, file)}
-							onRemove={() => onRemoveActivity(index)}
-						/>
-					))}
-				</tbody>
-			</table>
-			<div className={classes.dayActions}>
-				<Button
-					onClick={onAddActivity}
-					disabled={isLastElementAcitivityEmpty}
-					icon={<FaPlus />}
-					className={isLastElementAcitivityEmpty ? classes.disabled : undefined}
-					title={
-						isLastElementAcitivityEmpty
-							? 'Add some text to the acitivy on the final row to be able to add more activities'
-							: 'Add another activity'
-					}
-				>
-					Add another activity
-				</Button>
-				<Button onClick={onDeleteDay} variant="danger" icon={<FaTrash />}>
-					Delete day
-				</Button>
-			</div>
-		</div>
-	);
-	*/
 };

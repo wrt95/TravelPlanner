@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   padding-bottom: 3rem;
-  padding-inline: 5rem;
+  padding-inline: var(--page-padding-inline);
   margin: 0;
   height: 100%;
   flex: 1;
@@ -24,7 +24,7 @@
 }
 
 .headerIcon {
-  font-size: 100px;
+  font-size: var(--font-size-header-icon);
 }
 
 .rightHeaderIcon {
@@ -32,14 +32,16 @@
 }
 
 .pageHeader {
-  font-size: 50px;
+  font-size: var(--font-size-header);
   margin: 0;
   padding: 0;
+  text-align: center;
 }
 
 .tripLength {
-  font-size: 25px;
+  font-size: var(--text-font-size);
   font-weight: bold;
+  text-align: center;
 }
 
 .actionButtons {
@@ -58,7 +60,7 @@
 
 .subHeaderIcon {
   margin-left: 0.5rem;
-  font-size: 30px;
+  font-size: var(--font-size-sub-header-icon);
 }
 
 .formWrapper {

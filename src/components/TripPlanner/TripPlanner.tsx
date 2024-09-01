@@ -13,9 +13,12 @@ import { GiPalmTree, GiCommercialAirplane, GiSuitcase } from "react-icons/gi";
 import cn from "classnames";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { EditTripDetails } from "../EditTripDetails";
+import { useMediaQuery } from "../../hooks/useMediaQuery";
+import { MEDIA_QUERY_MAX_WIDTH } from "../../constants/mediaQueryConstants";
 
 export const TripPlanner = (): ReactElement => {
   const { tripData, setTripData } = useTripContext();
+  const shouldHideButtonText = useMediaQuery(MEDIA_QUERY_MAX_WIDTH);
 
   useLocalStorageLoadTrip(TRIP_DATA_LOCAL_STORAGE_KEY, setTripData);
   useLocalStorageSaveTrip(TRIP_DATA_LOCAL_STORAGE_KEY, tripData);
@@ -76,17 +79,26 @@ export const TripPlanner = (): ReactElement => {
                 {calculateDaysToDate()} days and will be {tripData.days.length}{" "}
                 day
                 {tripData.days.length === 1 ? "" : "s"} long
+                <GiCommercialAirplane className={classes.subHeaderIcon} />
+                <GiSuitcase className={classes.subHeaderIcon} />
               </p>
-              <GiCommercialAirplane className={classes.subHeaderIcon} />
-              <GiSuitcase className={classes.subHeaderIcon} />
             </div>
             <div className={classes.actionButtons}>
               <ExportPDF />
-              <Button onClick={handleClickEdit} icon={<FaEdit />}>
-                Edit destination and start date
+              <Button
+                onClick={handleClickEdit}
+                icon={<FaEdit />}
+                aria-label="Edit destination and start date"
+              >
+                {shouldHideButtonText ? "" : "Edit destination and start date"}
               </Button>
-              <Button onClick={resetData} variant="danger" icon={<FaTrash />}>
-                Reset form
+              <Button
+                onClick={resetData}
+                variant="danger"
+                icon={<FaTrash />}
+                aria-label="Reset form"
+              >
+                {shouldHideButtonText ? "" : "Reset form"}
               </Button>
             </div>
           </>
