@@ -7,6 +7,7 @@ import {
   View,
   StyleSheet,
   PDFDownloadLink,
+  Font,
 } from "@react-pdf/renderer";
 import { Button } from "../Button";
 import { useTripContext } from "../../contexts/TripContext";
@@ -22,6 +23,7 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica",
     paddingHorizontal: 50,
     paddingVertical: 40,
+    position: "relative", // Necessary for absolute positioning
   },
   titlePage: {
     textAlign: "center",
@@ -41,9 +43,7 @@ const styles = StyleSheet.create({
     marginBottom: MARGIN_BOTTOM_SEPARATOR,
     lineHeight: 1.3,
   },
-  activityContainer: {
-    marginBottom: MARGIN_BOTTOM_SEPARATOR + 10, // Increased spacing between activities
-  },
+  activityContainer: {},
   activityText: {
     marginBottom: 5,
     fontSize: FONT_SIZE_TEXT,
@@ -81,6 +81,13 @@ const styles = StyleSheet.create({
   downloadLink: {
     textDecoration: "none",
   },
+  pageNumber: {
+    position: "absolute",
+    bottom: 10,
+    right: 50,
+    fontSize: 12,
+    color: "gray",
+  },
 });
 
 export const ExportPDF = (): ReactElement => {
@@ -94,18 +101,33 @@ export const ExportPDF = (): ReactElement => {
   };
 
   // Function to add bullet points to non-empty lines in important information
-  const formatImportantInformation = (info: string) =>
-    info.split("\n").map((line, index) =>
-      line.trim() ? (
-        <Text key={index} style={styles.bulletPoint}>
-          • {line}
-        </Text>
-      ) : (
-        <Text key={index} style={styles.importantInfoContent}>
-          {" "}
-        </Text>
+  const formatImportantInformation = (info: string) => {
+    const lines = info.split("\n").map((line) => line.trim());
+    return lines.length === 0 || lines.every((line) => line === "") ? (
+      <Text style={styles.bulletPoint}>• No additional information added</Text>
+    ) : (
+      lines.map((line, index) =>
+        line ? (
+          <Text key={index} style={styles.bulletPoint}>
+            • {line}
+          </Text>
+        ) : (
+          <Text key={index} style={styles.importantInfoContent}>
+            {" "}
+          </Text>
+        )
       )
     );
+  };
+
+  // Function to get the PDF file name
+  const getPDFFileName = () => {
+    const startDate = new Date(tripData.startDate);
+    const formattedDate = startDate
+      .toLocaleDateString("en-GB")
+      .replace(/\//g, "");
+    return `Trip to ${tripData.destination} - ${formattedDate}.pdf`;
+  };
 
   return (
     <PDFDownloadLink
@@ -141,7 +163,16 @@ export const ExportPDF = (): ReactElement => {
                 {tripDay.activities.length > 0 &&
                 tripDay.activities[0].activity ? (
                   tripDay.activities.map((activity, activityIndex) => (
-                    <View key={activityIndex} style={styles.activityContainer}>
+                    <View
+                      key={activityIndex}
+                      style={{
+                        ...styles.activityContainer,
+                        marginBottom:
+                          activityIndex === tripDay.activities.length - 1
+                            ? 0
+                            : MARGIN_BOTTOM_SEPARATOR + 10,
+                      }}
+                    >
                       <Text style={styles.activityText}>
                         Activity: {activity.activity}
                       </Text>
@@ -149,11 +180,9 @@ export const ExportPDF = (): ReactElement => {
                         Information:
                       </Text>
                       <View style={styles.importantInfoContent}>
-                        {activity.importantInformation
-                          ? formatImportantInformation(
-                              activity.importantInformation
-                            )
-                          : "No additional information"}
+                        {formatImportantInformation(
+                          activity.importantInformation
+                        )}
                       </View>
                     </View>
                   ))
@@ -166,10 +195,19 @@ export const ExportPDF = (): ReactElement => {
                 <View style={styles.divider} />
               </View>
             ))}
+
+            {/* Page number */}
+            <Text
+              style={styles.pageNumber}
+              render={({ pageNumber, totalPages }) =>
+                `${pageNumber} / ${totalPages}`
+              }
+              fixed
+            />
           </Page>
         </Document>
       }
-      fileName="trip_report.pdf"
+      fileName={getPDFFileName()}
     >
       {({ blob, url, loading, error }) =>
         loading ? (
