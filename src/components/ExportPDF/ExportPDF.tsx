@@ -12,10 +12,10 @@ import { Button } from "../Button";
 import { useTripContext } from "../../contexts/TripContext";
 import { FaDownload } from "react-icons/fa";
 
-const MARGIN_BOTTOM_SEPERATOR = 10;
+const MARGIN_BOTTOM_SEPARATOR = 10;
 const MARGIN_VERTICAL_DIVIDER = 30;
-
 const FONT_SIZE_TEXT = 18;
+const FONT_SIZE_SMALL_TEXT = FONT_SIZE_TEXT - 4;
 
 const styles = StyleSheet.create({
   page: {
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
   },
   titlePage: {
     textAlign: "center",
-    marginBottom: MARGIN_BOTTOM_SEPERATOR,
+    marginBottom: MARGIN_BOTTOM_SEPARATOR,
   },
   destinationTitle: {
     fontSize: 32,
@@ -33,28 +33,46 @@ const styles = StyleSheet.create({
   },
   tripInfo: {
     fontSize: FONT_SIZE_TEXT,
-    marginBottom: MARGIN_BOTTOM_SEPERATOR,
+    marginBottom: MARGIN_BOTTOM_SEPARATOR,
+    lineHeight: 1.3,
   },
   dayHeader: {
     fontSize: 22,
-    marginBottom: MARGIN_BOTTOM_SEPERATOR,
+    marginBottom: MARGIN_BOTTOM_SEPARATOR,
+    lineHeight: 1.3,
   },
   activityContainer: {
-    gap: MARGIN_BOTTOM_SEPERATOR,
+    marginBottom: MARGIN_BOTTOM_SEPARATOR + 10, // Increased spacing between activities
   },
   activityText: {
     marginBottom: 5,
     fontSize: FONT_SIZE_TEXT,
+    lineHeight: 1.5,
+  },
+  importantInfoHeader: {
+    fontSize: FONT_SIZE_TEXT,
+    marginBottom: 3, // Reduced space between header and content
+  },
+  importantInfoContent: {
+    fontSize: FONT_SIZE_SMALL_TEXT,
+    marginBottom: 5,
+    lineHeight: 1.3,
   },
   noActivityText: {
     fontStyle: "italic",
     fontSize: FONT_SIZE_TEXT,
+    lineHeight: 1.3,
   },
   divider: {
     borderBottomWidth: 1,
     borderBottomColor: "#000",
     marginVertical: MARGIN_VERTICAL_DIVIDER,
     marginHorizontal: 0,
+  },
+  bulletPoint: {
+    marginBottom: 3,
+    fontSize: FONT_SIZE_SMALL_TEXT,
+    lineHeight: 1.3,
   },
   downloadButton: {
     width: "100%",
@@ -74,6 +92,20 @@ export const ExportPDF = (): ReactElement => {
     date.setDate(date.getDate() + daysToAdd);
     return date.toLocaleDateString("en-GB");
   };
+
+  // Function to add bullet points to non-empty lines in important information
+  const formatImportantInformation = (info: string) =>
+    info.split("\n").map((line, index) =>
+      line.trim() ? (
+        <Text key={index} style={styles.bulletPoint}>
+          • {line}
+        </Text>
+      ) : (
+        <Text key={index} style={styles.importantInfoContent}>
+          {" "}
+        </Text>
+      )
+    );
 
   return (
     <PDFDownloadLink
@@ -101,32 +133,35 @@ export const ExportPDF = (): ReactElement => {
 
             {/* Days Content */}
             {tripData.days.map((tripDay: TripDay, index: number) => (
-              <View key={index} wrap={false}>
-                <View style={styles.activityContainer}>
-                  <Text style={styles.dayHeader}>
-                    Day {tripDay.day} -{" "}
-                    {formatDate(tripData.startDate, tripDay.day - 1)}
-                  </Text>
-                  {tripDay.activities.length > 0 &&
-                  tripDay.activities[0].activity ? (
-                    tripDay.activities.map((activity, activityIndex) => (
-                      <View key={activityIndex}>
-                        <Text style={styles.activityText}>
-                          Activity - {activity.activity}
-                        </Text>
-                        <Text style={styles.activityText}>
-                          Information -{" "}
-                          {activity.importantInformation ||
-                            "No additional information"}
-                        </Text>
+              <View key={index}>
+                <Text style={styles.dayHeader}>
+                  Day {tripDay.day} -{" "}
+                  {formatDate(tripData.startDate, tripDay.day - 1)}
+                </Text>
+                {tripDay.activities.length > 0 &&
+                tripDay.activities[0].activity ? (
+                  tripDay.activities.map((activity, activityIndex) => (
+                    <View key={activityIndex} style={styles.activityContainer}>
+                      <Text style={styles.activityText}>
+                        Activity: {activity.activity}
+                      </Text>
+                      <Text style={styles.importantInfoHeader}>
+                        Information:
+                      </Text>
+                      <View style={styles.importantInfoContent}>
+                        {activity.importantInformation
+                          ? formatImportantInformation(
+                              activity.importantInformation
+                            )
+                          : "No additional information"}
                       </View>
-                    ))
-                  ) : (
-                    <Text style={styles.noActivityText}>
-                      No activities added for this day
-                    </Text>
-                  )}
-                </View>
+                    </View>
+                  ))
+                ) : (
+                  <Text style={styles.noActivityText}>
+                    No activities added for this day
+                  </Text>
+                )}
                 {/* Divider after each day */}
                 <View style={styles.divider} />
               </View>
