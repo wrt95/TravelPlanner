@@ -7,7 +7,6 @@ import {
   View,
   StyleSheet,
   PDFDownloadLink,
-  Font,
 } from "@react-pdf/renderer";
 import { Button } from "../Button";
 import { useTripContext } from "../../contexts/TripContext";
