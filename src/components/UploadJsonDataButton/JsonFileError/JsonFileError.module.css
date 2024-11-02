@@ -1,0 +1,9 @@
+.resetButton {
+  margin-top: 1rem;
+}
+
+.error {
+  color: var(--primary-color-danger);
+  font-size: var(--text-font-size);
+  margin-top: 0.5rem;
+}

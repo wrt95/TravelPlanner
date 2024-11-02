@@ -15,6 +15,8 @@ import { FaEdit, FaTrash } from "react-icons/fa";
 import { EditTripDetails } from "../EditTripDetails";
 import { useMediaQuery } from "../../hooks/useMediaQuery";
 import { MEDIA_QUERY_MAX_WIDTH } from "../../constants/mediaQueryConstants";
+import { SaveDataAsJsonButton } from "../SaveDataAsJsonButton";
+import { calculateDaysToDate } from "../../utils/calculateDaysToDate";
 
 export const TripPlanner = (): ReactElement => {
   const { tripData, setTripData } = useTripContext();
@@ -39,21 +41,6 @@ export const TripPlanner = (): ReactElement => {
     setEditoMode(true);
   };
 
-  // TODO UTILS
-  const calculateDaysToDate = (): number => {
-    console.log("date", tripData.startDate);
-    const currentDate = new Date();
-    const startDate = new Date(tripData.startDate);
-    const differenceInTime = startDate.getTime() - currentDate.getTime();
-
-    // Convert the time difference from milliseconds to days
-    const differenceInDays = Math.ceil(
-      differenceInTime / (1000 * 60 * 60 * 24)
-    );
-
-    return differenceInDays;
-  };
-
   // TODO - split into smaller chunks
   return (
     <div className={classes.pageWrapper}>
@@ -76,8 +63,8 @@ export const TripPlanner = (): ReactElement => {
             <div className={classes.subHeader}>
               <p className={classes.tripLength}>
                 Your trip to "{tripData.destination}" is in{" "}
-                {calculateDaysToDate()} day
-                {calculateDaysToDate() === 1 ? "" : "s"} and will be{" "}
+                {calculateDaysToDate(tripData)} day
+                {calculateDaysToDate(tripData) === 1 ? "" : "s"} and will be{" "}
                 {tripData.days.length} day
                 {tripData.days.length === 1 ? "" : "s"}
                 <GiCommercialAirplane className={classes.subHeaderIcon} />
@@ -107,6 +94,7 @@ export const TripPlanner = (): ReactElement => {
               >
                 Reset form
               </Button>
+              <SaveDataAsJsonButton />
             </div>
           </>
         )}

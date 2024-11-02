@@ -13,7 +13,14 @@ export type Trip = {
   destination: string;
   startDate: string;
   days: TripDay[];
-  // TODO price
 };
 
 export type TripActivityTextField = "activity" | "importantInformation";
+
+export type TripDayWithoutAccordion = Omit<TripDay, "isAccordionOpen">;
+
+export type TripWithoutAccordion = {
+  destination: string;
+  startDate: string;
+  days: TripDayWithoutAccordion[];
+};

@@ -5,6 +5,7 @@ import { Button } from "../Button";
 import { useTripContext } from "../../contexts/TripContext";
 import { Trip, TripDay } from "../../types/Trip";
 import { FaPlus } from "react-icons/fa";
+import { UploadJsonDataButton } from "../UploadJsonDataButton";
 
 type CreateTripFormData = {
   destination: string;
@@ -75,6 +76,7 @@ export const CreateTripForm = (): ReactElement => {
           Create Plan
         </Button>
       </form>
+      <UploadJsonDataButton />
     </>
   );
 };
